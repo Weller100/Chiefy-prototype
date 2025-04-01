@@ -1,0 +1,17 @@
+I've made the following changes:
+Created a /public/courses directory to store course thumbnails
+Updated the CourseCard component to use Next.js Image component with proper optimization
+Added construction-themed thumbnails for each course:
+"UI Design Fundamentals" → "Blueprint Reading" with /courses/blueprint-reading.jpg
+"Advanced React Patterns" → "Site Management" with /courses/site-management.jpg
+"User Research Methods" → "Construction Planning" with /courses/construction-planning.jpg
+Added a default thumbnail (blueprint-default.jpg) as a fallback
+You'll need to add these images to the /public/courses directory:
+blueprint-reading.jpg - An image showing architectural blueprints or construction plans
+site-management.jpg - An image of a construction site with management activities
+construction-planning.jpg - An image showing construction planning or scheduling
+blueprint-default.jpg - A default construction-themed image
+Would you like me to:
+Help you source appropriate images for these thumbnails?
+Update the course titles to be more construction-focused?
+Make any adjustments to the thumbnail styling or layout?

@@ -1,0 +1,14 @@
+Add three number images...
+
+You'll need to add three images to the chiefy/public/avatars/ directory:
+
+architect.png - An image representing an architect (perhaps wearing a hard hat and holding blueprints)
+developer.png - An image representing a development manager (perhaps in a construction site with a tablet/laptop)
+construction.png - An image representing a construction manager (perhaps wearing safety gear and holding a clipboard)
+I've made the following changes:
+Added Next.js Image component import
+Updated the avatar container with proper styling for images
+Added Image components with proper dimensions and optimization
+Set up the proper file paths for the avatars
+Added overflow handling and background color for loading state
+Once you add the avatar images to the public/avatars directory, they will appear in the rounded circles for each mentor.
