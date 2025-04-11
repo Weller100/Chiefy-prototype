@@ -9,15 +9,12 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   const navItems = [
-    { label: 'Discover', icon: '🔍', href: '/discover' },
-    { label: 'Sessions', icon: '🎥', href: '/sessions' },
-    { label: 'Shows', icon: '🎬', href: '/shows' },
-    { label: 'Dashboard', icon: '📊', href: '/dashboard' },
-    { label: 'Library', icon: '📚', href: '/library' },
-    { label: 'My Students', icon: '👥', href: '/students' },
-    { label: 'Subscriptions', icon: '💳', href: '/subscriptions' },
-    { label: 'Training Plans', icon: '📋', href: '/training' },
-    { label: 'Availability', icon: '📅', href: '/availability' },
+    { label: 'Homepage', icon: '🏠', href: '/' }, // Added Homepage button
+    { label: 'Mentality Overlay (Mentoring)', icon: '🧠', href: '/mentoring' },
+    { label: 'Chiefy Predictive (Voice AI)', icon: '🤖', href: '/voice-ai' },
+    { label: 'Dream Team', icon: '🌟', href: '/dream-team' },
+    { label: 'Templates', icon: '📑', href: '/templates' },
+    { label: 'Chat', icon: '💬', href: '/chat' },
   ];
 
   return (
@@ -92,4 +89,4 @@ export default function Sidebar() {
       </aside>
     </>
   );
-} 
+}
