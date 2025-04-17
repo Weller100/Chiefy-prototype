@@ -138,225 +138,144 @@ export default function VoiceAiPage() {
   }, []);
 
   return (
-    <div className="py-8 px-4 sm:px-6">
+    <div className="min-h-screen w-full bg-gradient-to-b from-gray-900 via-indigo-900 to-blue-900 text-white pt-16 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#6B4EFF] to-[#9747FF] text-white rounded-2xl p-8 md:p-12 mb-12">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Chiefy Predictive Voice AI</h1>
-          <p className="text-xl md:text-2xl italic mb-6">"Ever heard there's no shortcut to experience... well at Chiefy we disagree. We provide you with all the tools you need to accelerate your skills in Property & Construction."</p>
-          <p className="text-lg mb-8">Let Chiefy guide you from your first Concept all the way to Completion, including everything in between.</p>
-          <div className="flex justify-center">
-            <button className="bg-white text-[#6B4EFF] px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
-              Start Your Journey
-            </button>
+      <section className="relative h-[500px] mb-16">
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900 to-blue-900 opacity-90" />
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="text-center max-w-3xl mx-auto px-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Chiefy Predictive Voice AI</h1>
+            <p className="text-2xl text-gray-300 mb-8">
+              Your intelligent construction assistant
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Recipe for Success Section */}
-      <section className="max-w-4xl mx-auto mb-12">
-        <div className="bg-white rounded-xl p-6 shadow-sm">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold mb-4">Your Recipe for Property Development Success</h2>
-            <p className="text-lg">Ever wished that there was a recipe to do your own Property Development? Well, now there is!</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex items-start gap-3">
-              <div className="bg-[#F0EEFF] p-3 rounded-full">
-                <span className="text-[#6B4EFF] text-xl">1</span>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">Ask Anything</h3>
-                <p className="text-gray-600">Get the answers and guidance you need, without heartache or embarrassment.</p>
-              </div>
+      <div className="w-full max-w-6xl mx-auto px-6">
+        {/* Introduction Section */}
+        <div className="mb-16">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 text-center">
+            <p className="text-xl mb-8">
+              Let Chiefy guide you from your first Concept all the way to Completion, including everything in between.
+            </p>
+            <div className="bg-purple-600/20 rounded-xl p-6 mb-8">
+              <p className="text-lg italic">
+                "Ever heard there's no shortcut to experience... well at Chiefy we disagree. We provide you with all the tools you need to accelerate your skills in Property & Construction."
+              </p>
             </div>
-            <div className="flex items-start gap-3">
-              <div className="bg-[#F0EEFF] p-3 rounded-full">
-                <span className="text-[#6B4EFF] text-xl">2</span>
+            <div className="grid md:grid-cols-2 gap-6 text-left">
+              <div className="bg-white/5 rounded-xl p-6">
+                <h3 className="text-xl font-semibold mb-4">Want to get the best "Outcomes" for your project?</h3>
+                <p className="text-gray-300">Just ask Chiefy! Our AI-powered assistant is here to help.</p>
               </div>
-              <div>
-                <h3 className="font-semibold mb-1">Follow the Process</h3>
-                <p className="text-gray-600">Our stage-by-stage approach ensures you never miss a critical step.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="bg-[#F0EEFF] p-3 rounded-full">
-                <span className="text-[#6B4EFF] text-xl">3</span>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">Apply Industry Knowledge</h3>
-                <p className="text-gray-600">Leverage data from thousands of successful projects.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="bg-[#F0EEFF] p-3 rounded-full">
-                <span className="text-[#6B4EFF] text-xl">4</span>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">Achieve Optimal Outcomes</h3>
-                <p className="text-gray-600">Want the best outcomes for your project? Just ask Chiefy!</p>
+              <div className="bg-white/5 rounded-xl p-6">
+                <h3 className="text-xl font-semibold mb-4">Get Expert Guidance</h3>
+                <p className="text-gray-300">Get the answers and the guidance you need, without the heartache or embarrassment.</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Voice AI Demo Section */}
-      <section className="max-w-4xl mx-auto mb-12">
-        <h2 className="text-2xl font-bold mb-6 text-center">Experience Chiefy Predictive Voice AI</h2>
-        
-        {/* Development Stages Tabs */}
-        <div className="flex flex-wrap gap-2 mb-6 justify-center">
-          {developmentStages.map((stage) => (
-            <button
-              key={stage.id}
-              className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-colors ${
-                activeTab === stage.id
-                  ? 'bg-[#6B4EFF] text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
-              }`}
-              onClick={() => setActiveTab(stage.id)}
-            >
-              <span>{stage.icon}</span>
-              <span>{stage.title}</span>
-            </button>
-          ))}
-        </div>
-        
-        {/* Stage Description */}
-        <div className="bg-[#F8F8F8] p-4 rounded-lg mb-6">
-          <p className="text-center">
-            <span className="font-semibold">{developmentStages.find(s => s.id === activeTab)?.title} Stage: </span>
-            {developmentStages.find(s => s.id === activeTab)?.description}
-          </p>
-        </div>
-        
-        {/* Voice AI Interaction Area */}
-        <div className="bg-white rounded-xl overflow-hidden shadow-sm mb-6">
-          {/* Question Area */}
-          <div className="p-6 border-b border-gray-200">
-            <div className="flex items-center mb-4">
-              <h3 className="text-lg font-semibold flex-1">Ask Your Question</h3>
-              <button 
-                onClick={() => setShowTips(!showTips)}
-                className="text-[#6B4EFF] text-sm flex items-center gap-1"
-              >
-                {showTips ? 'Hide Tips' : 'Show Tips'}
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-                </svg>
-              </button>
-            </div>
-            
-            {showTips && (
-              <div className="bg-[#F0EEFF] p-4 rounded-lg mb-4">
-                <p className="text-sm text-[#6B4EFF] mb-2 font-medium">Tips for asking effective questions:</p>
-                <ul className="text-sm list-disc pl-5 space-y-1">
-                  <li>Be specific about your project type and stage</li>
-                  <li>Mention your location for region-specific advice</li>
-                  <li>Focus on one issue at a time for detailed answers</li>
-                </ul>
-              </div>
-            )}
-            
-            <div className="flex gap-2 mb-4">
-              <input
-                type="text"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-                placeholder="Type your question or click the microphone to speak..."
-                className="flex-1 px-4 py-3 rounded-lg bg-[#F8F8F8] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6B4EFF]"
-              />
+        {/* Development Stages */}
+        <div className="mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {developmentStages.map((stage) => (
               <button
-                onClick={handleRecordClick}
-                className={`p-3 rounded-lg flex items-center justify-center ${
-                  isRecording ? 'bg-red-500 text-white' : 'bg-[#6B4EFF] text-white'
+                key={stage.id}
+                onClick={() => setActiveTab(stage.id)}
+                className={`p-6 rounded-xl transition-all ${
+                  activeTab === stage.id 
+                    ? 'bg-purple-600 text-white' 
+                    : 'bg-white/10 hover:bg-white/20 text-white'
                 }`}
               >
-                {isRecording ? (
-                  <span className="flex items-center gap-2">
-                    <span className="animate-pulse">●</span>
-                    <span>Recording...</span>
-                  </span>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                  </svg>
-                )}
+                <div className="text-3xl mb-2">{stage.icon}</div>
+                <h3 className="text-lg font-semibold mb-2">{stage.title}</h3>
+                <p className="text-sm opacity-80">{stage.description}</p>
               </button>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-600 mb-2">Sample questions for this stage:</p>
-              <div className="flex flex-wrap gap-2">
-                {sampleQuestions[activeTab as keyof typeof sampleQuestions].map((q, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuestionClick(q)}
-                    className="text-sm bg-[#F8F8F8] hover:bg-gray-200 text-gray-700 py-1 px-3 rounded-full"
-                  >
-                    {q}
-                  </button>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
-          
-          {/* Answer Area */}
-          <div className="p-6 bg-[#F8F8F8]">
-            <h3 className="text-lg font-semibold mb-4">Chiefy's Answer</h3>
-            
-            {answerLoading ? (
-              <div className="flex flex-col items-center justify-center py-8">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#6B4EFF] mb-4"></div>
-                <p className="text-gray-600">Analyzing your question...</p>
-              </div>
-            ) : answer ? (
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <p className="text-gray-800">{answer}</p>
-              </div>
-            ) : (
-              <div className="text-center py-8 text-gray-500">
-                <p>Your answer will appear here after you ask a question.</p>
+        </div>
+
+        {/* Voice Interface */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 mb-12">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold mb-4">Ask Your Question</h2>
+              <p className="text-gray-300">
+                Click the microphone to start recording or select a sample question below
+              </p>
+            </div>
+
+            {/* Recording Interface */}
+            <div className="flex flex-col items-center mb-8">
+              <button
+                onClick={handleRecordClick}
+                className={`w-16 h-16 rounded-full flex items-center justify-center transition-all ${
+                  isRecording 
+                    ? 'bg-red-500 animate-pulse' 
+                    : 'bg-purple-600 hover:bg-purple-700'
+                }`}
+              >
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                  <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                </svg>
+              </button>
+              {isRecording && (
+                <p className="text-red-400 mt-2 animate-pulse">Recording...</p>
+              )}
+            </div>
+
+            {/* Sample Questions */}
+            <div className="space-y-4">
+              <h3 className="font-semibold text-lg mb-2">Sample Questions for {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Stage:</h3>
+              {sampleQuestions[activeTab as keyof typeof sampleQuestions].map((q, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleQuestionClick(q)}
+                  className="w-full text-left p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+
+            {/* Answer Display */}
+            {(answerLoading || answer) && (
+              <div className="mt-8 p-6 rounded-lg bg-white/5">
+                {answerLoading ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+                  </div>
+                ) : (
+                  <div>
+                    <h4 className="font-semibold mb-2">Answer:</h4>
+                    <p className="text-gray-300">{answer}</p>
+                  </div>
+                )}
               </div>
             )}
           </div>
         </div>
-      </section>
 
-      {/* Success Stories */}
-      <section className="max-w-4xl mx-auto mb-12">
-        <h2 className="text-2xl font-bold mb-6 text-center">Success Stories</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {successStories.map((story, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
-              <div className="text-[#6B4EFF] text-4xl mb-4">"</div>
-              <p className="text-gray-700 mb-4">{story.quote}</p>
-              <div className="text-right">
-                <p className="font-semibold">{story.author}</p>
-                <p className="text-sm text-gray-600">{story.project}</p>
+        {/* Success Stories */}
+        <div className="mb-16 bg-gradient-to-b from-transparent via-purple-900/10 to-purple-900/20 pb-24">
+          <h2 className="text-2xl font-bold mb-8 text-center">Success Stories</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {successStories.map((story, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <p className="text-gray-300 italic mb-4">"{story.quote}"</p>
+                <div>
+                  <p className="font-semibold">{story.author}</p>
+                  <p className="text-sm text-gray-400">{story.project}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="max-w-3xl mx-auto">
-        <div className="bg-[#6B4EFF] text-white rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Ready to Start Your Property Development Journey?</h2>
-          <p className="mb-6">Get the expert guidance you need, from concept to completion, without years of costly trial and error.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-[#6B4EFF] px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
-              Try Chiefy Voice AI Free
-            </button>
-            <button className="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
-              View Pricing Plans
-            </button>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
