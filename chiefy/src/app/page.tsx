@@ -1,5 +1,4 @@
-// Save this file to app/landing/page.tsx or replace your existing app/page.tsx
-
+"use client";
 import LandingPage from "@/components/features/LandingPage";
 
 export default function Home() {

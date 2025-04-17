@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import Analytics from '@/services/analytics';
 
 interface SidebarProps {
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 export default function Sidebar({ onClose }: SidebarProps) {
@@ -59,33 +59,31 @@ export default function Sidebar({ onClose }: SidebarProps) {
     }
   };
 
-  const handleNavClick = (label: string) => {
+  const handleNavClick = (item: any) => {
     Analytics.trackEvent('navigation_click', {
-      item: label,
+      item: item.label,
       path: pathname,
       timestamp: new Date().toISOString(),
     });
     
-    if (onClose) {
+    if (!item.dropdowns) {
       onClose();
+    } else {
+      toggleSection(item.label);
     }
   };
 
   return (
-    <div className="h-full flex flex-col bg-gray-800 bg-opacity-80 backdrop-blur-sm text-white">
+    <div className="h-full flex flex-col bg-gray-900/95 backdrop-blur-xl text-white">
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
       <div className="p-4">
-        <div className="flex justify-end mb-6">
-          {onClose && (
-            <button
-              className="p-2 hover:bg-white/10 rounded-lg text-white"
-              onClick={onClose}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          )}
-        </div>
         <nav>
           <ul className="space-y-2">
             {navItems.map((item, index) => (
@@ -93,11 +91,8 @@ export default function Sidebar({ onClose }: SidebarProps) {
                 <div>
                   <Link
                     href={item.href}
-                    onClick={() => {
-                      if (onClose) onClose();
-                      if (item.dropdowns) toggleSection(item.label);
-                    }}
-                    className={`w-full flex items-center justify-between px-4 py-2 text-white hover:bg-white/10 rounded-lg transition-colors ${
+                    onClick={() => handleNavClick(item)}
+                    className={`w-full flex items-center justify-between px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 ${
                       pathname === item.href ? 'bg-white/20 text-white' : ''
                     }`}
                   >

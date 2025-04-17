@@ -1,113 +1,131 @@
 "use client";
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { type: 'bot', text: "Hi! How can I help you?" },
-    { type: 'bot', text: "How can we assist you today?" },
+  const [message, setMessage] = useState('');
+  const [chatHistory, setChatHistory] = useState([
+    {
+      sender: 'bot',
+      message: 'Hi there! 👋 I\'m Chiefy, your construction assistant. How can I help you today?',
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    }
   ]);
-  const [inputText, setInputText] = useState('');
 
-  const handleSend = () => {
-    if (!inputText.trim()) return;
-    setMessages(prev => [...prev, { type: 'user', text: inputText }]);
-    setInputText('');
-
-    // Simulate bot response
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!message.trim()) return;
+    
+    // Add user message to chat
+    const userMessage = {
+      sender: 'user',
+      message: message.trim(),
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+    
+    setChatHistory(prev => [...prev, userMessage]);
+    setMessage('');
+    
+    // Simulate bot response after a short delay
     setTimeout(() => {
-      const botResponse = "Absolutely! I'd love to help you find the perfect solution. Do you have any specific requirements in mind?";
-      setMessages(prev => [...prev, { type: 'bot', text: botResponse }]);
+      const botResponse = {
+        sender: 'bot',
+        message: "I'd be happy to help with your construction query. Could you provide more details about your project?",
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      
+      setChatHistory(prev => [...prev, botResponse]);
     }, 1000);
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-50">
-      {isOpen && (
-        <div className="bg-white rounded-2xl shadow-xl w-[500px] mb-4">
-          {/* Header with stats */}
-          <div className="p-6">
-            <h2 className="text-lg font-semibold mb-2">Training Sources</h2>
-            <p className="text-gray-500 text-sm mb-4">Here you can check the sources that your AI Chatbot is trained on:</p>
-            
-            <div className="flex justify-between items-center mb-6">
-              <div>
-                <span className="text-gray-700">Links</span>
-                <div className="font-semibold">1/20</div>
-              </div>
-              <div>
-                <span className="text-gray-700">Files</span>
-                <div className="font-semibold">0/50</div>
-              </div>
-              <div>
-                <span className="text-gray-700">Characters</span>
-                <div className="font-semibold">6488/5mil</div>
-              </div>
-              <button className="px-4 py-1 bg-gray-100 rounded-full text-sm font-medium">
-                UPGRADE
-              </button>
+    <React.Fragment>
+      {/* Floating chat button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 shadow-lg flex items-center justify-center z-40 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300"
+      >
+        {isOpen ? (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          </svg>
+        )}
+      </button>
+      
+      {/* Chat panel */}
+      <div 
+        className={`fixed bottom-24 right-6 w-96 max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-xl z-40 transition-all duration-300 overflow-hidden ${
+          isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+        }`}
+      >
+        {/* Chat header */}
+        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+              <Image
+                src="/images/chiefy-logo.png"
+                alt="Chiefy Assistant"
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">Chiefy Assistant</h3>
+              <p className="text-xs text-white/70">Online | Construction Expert</p>
             </div>
           </div>
-
-          {/* Chat Area */}
-          <div className="h-[400px] overflow-y-auto px-6 py-4">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                <Image
-                  src="/images/chiefy-logo.png"
-                  alt="Chiefy"
-                  width={30}
-                  height={30}
-                  className="rounded-full"
-                />
-              </div>
-              <span className="font-semibold">Chiefy Chat</span>
-            </div>
-
-            {messages.map((msg, index) => (
-              <div key={index} className="mb-6">
-                <div className={`max-w-[80%] ${msg.type === 'user' ? 'ml-auto bg-gray-900 text-white' : 'bg-gray-100'} rounded-2xl p-4`}>
-                  {msg.text}
-                </div>
-                <div className={`text-xs text-gray-400 mt-1 ${msg.type === 'user' ? 'text-right' : 'text-left'}`}>
-                  12/06/2024, 12:25 PM
+        </div>
+        
+        {/* Chat messages */}
+        <div className="h-80 overflow-y-auto p-4 bg-gray-50">
+          <div className="space-y-4">
+            {chatHistory.map((chat, index) => (
+              <div key={index} className={`flex ${chat.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div 
+                  className={`max-w-[80%] rounded-lg p-3 ${
+                    chat.sender === 'user' 
+                      ? 'bg-purple-600 text-white rounded-br-none' 
+                      : 'bg-gray-200 text-gray-800 rounded-bl-none'
+                  }`}
+                >
+                  <p className="text-sm">{chat.message}</p>
+                  <span className={`text-xs block mt-1 ${chat.sender === 'user' ? 'text-purple-200' : 'text-gray-500'}`}>
+                    {chat.timestamp}
+                  </span>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* Input Area */}
-          <div className="p-6 border-t">
-            <div className="relative">
-              <input
-                type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Ask me anything..."
-                className="w-full px-4 py-3 pr-12 bg-gray-100 rounded-xl focus:outline-none"
-              />
-              <button
-                onClick={handleSend}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-              >
-                ↑
-              </button>
-            </div>
-            <div className="text-center text-sm text-gray-400 mt-4">
-              Powered by Chiefy Chat
-            </div>
-          </div>
         </div>
-      )}
-
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:from-purple-700 hover:to-indigo-700 transition"
-      >
-        💬
-      </button>
-    </div>
+        
+        {/* Chat input */}
+        <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-4">
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Type your message..."
+              className="flex-1 bg-gray-100 rounded-full py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
+            />
+            <button 
+              type="submit"
+              className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 transition"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </React.Fragment>
   );
-} 
+}
