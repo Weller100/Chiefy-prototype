@@ -1,7 +1,7 @@
 @import "tailwindcss/preflight";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
+@import "remixicon/fonts/remixicon.css";
 /* Load the custom font */
 @font-face {
   font-family: "Kernel-Bold";
@@ -36,6 +36,7 @@ h2 {
 }
 
 .gradient-text {
+  font-family: 'Kernel-Bold', sans-serif !important;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

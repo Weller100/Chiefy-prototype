@@ -21,11 +21,6 @@ const LandingPage = () => {
     phone: ''
   });
   
-  const handleLearnMore = () => {
-    const element = document.querySelector('#stay-updated');
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const scrollToStayUpdated = () => {
     document.querySelector('#stay-updated')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -88,7 +83,7 @@ const LandingPage = () => {
             <div className="hidden md:flex items-center space-x-8">
               <a 
                 href="#features" 
-                className="text-white/80 hover:text-white transition-colors font-kernel"
+                className="text-white/80 hover:text-white transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
@@ -98,7 +93,7 @@ const LandingPage = () => {
               </a>
               <a 
                 href="#how-it-works" 
-                className="text-white/80 hover:text-white transition-colors font-kernel"
+                className="text-white/80 hover:text-white transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector('#how-it-works')?.scrollIntoView({ behavior: 'smooth' });
@@ -108,7 +103,7 @@ const LandingPage = () => {
               </a>
               <a 
                 href="#testimonials" 
-                className="text-white/80 hover:text-white transition-colors font-kernel"
+                className="text-white/80 hover:text-white transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector('#testimonials')?.scrollIntoView({ behavior: 'smooth' });
@@ -118,7 +113,7 @@ const LandingPage = () => {
               </a>
               <a 
                 href="#pricing" 
-                className="text-white/80 hover:text-white transition-colors font-kernel"
+                className="text-white/80 hover:text-white transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' });
@@ -181,8 +176,8 @@ const LandingPage = () => {
             <a href="#" className="neon-button bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-button text-center font-bold whitespace-nowrap">
               Start Your Journey
             </a>
-            <a href="#" className="border border-white/30 hover:border-white/50 bg-black/30 backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-2">
-              <i className="ri-play-circle-line ri-lg"></i> Watch Demo
+            <a href="#" className="border border-white/30 hover:border-white/50 bg-black/50 backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-2">
+              <i className="ri-play-circle-line"></i> Watch Demo
             </a>
           </div>
           
@@ -272,7 +267,7 @@ const LandingPage = () => {
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-              <div className="text-purple-500 text-2xl">🤖</div>
+              <div className="text-purple-500 text-2xl">⭕</div>
             </div>
             <h3 className="text-xl font-bold mb-3 text-white">AI Development Coach</h3>
             <p className="text-white/70 mb-4">Personalized AI mentor that adapts to your learning style and provides real-time feedback on your delivery strategies.</p>
@@ -306,7 +301,7 @@ const LandingPage = () => {
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-              <div className="text-purple-500 text-2xl">🏆</div>
+              <div className="text-purple-500 text-2xl">💎</div>
             </div>
             <h3 className="text-xl font-bold mb-3 text-white">Achievement System</h3>
             <p className="text-white/70 mb-4">Earn badges, certifications, and industry recognition as you complete projects and master development skills.</p>
@@ -357,7 +352,7 @@ const LandingPage = () => {
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
-              <div className="text-red-400 text-2xl">⚡</div>
+              <div className="text-red-400 text-2xl">⚪</div>
             </div>
             <h3 className="text-xl font-bold mb-3 text-white">Project Personalization</h3>
             <p className="text-white/70 mb-4">Customize and personalize your development projects with advanced tools, profiling and templates to your projects unique requirements.</p>
@@ -661,7 +656,7 @@ const LandingPage = () => {
                   </li>
                 </ul>
                 <a href="#" className="border border-white/30 hover:border-white/50 bg-white/5 hover:bg-white/10 px-6 py-3 rounded-button text-center font-bold whitespace-nowrap block transition-colors">
-                  Download
+                  Start Free Trial
                 </a>
               </div>
               
@@ -812,7 +807,7 @@ const LandingPage = () => {
                   Start Free Trial
                 </a>
                 <a href="#" className="border border-white/30 hover:border-white/50 bg-black/50 backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-2">
-                  <i className="ri-calendar-line"></i> Schedule Demo
+                  <i className="ri-play-circle-line"></i> Watch Demo
                 </a>
               </div>
               <div className="flex flex-wrap justify-center gap-8">
@@ -863,14 +858,12 @@ const LandingPage = () => {
                     onClick={() => setRegistrationType('company')}
                     className="action-button bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 transition-all flex items-center justify-center gap-2"
                   >
-                    <i className="ri-building-4-line"></i>
                     Register as Company
                   </button>
                   <button 
                     onClick={() => setRegistrationType('individual')}
                     className="action-button border border-white/30 hover:border-white/50 bg-black/30 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
                   >
-                    <i className="ri-user-line"></i>
                     Register as Individual
                   </button>
                 </div>
