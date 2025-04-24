@@ -126,13 +126,13 @@ const LandingPage = () => {
             <div className="flex items-center gap-4">
               <button 
                 onClick={() => setIsLoginModalOpen(true)} 
-                className="text-white/70 hover:text-white transition-colors font-kernel"
+                className="text-white/70 hover:text-white transition-colors"
               >
                 Login
               </button>
               <button 
                 onClick={() => setCurrentScreen("download")}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-kernel flex items-center gap-2 transition-all"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all"
               >
                 Download 
                 <i className="ri-arrow-down-line text-white"></i>
@@ -259,7 +259,7 @@ const LandingPage = () => {
     <section id="features" className="py-20 bg-black">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold mb-4">Game-Changing <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">Features</span></h2>
+          <h2 className="text-4xl font-bold mb-4">Game-Changing <span className="gradient-text">Features</span></h2>
           <p className="text-white/70 text-lg">Our Platform combines cutting edge AI with gamified learning to create an immersive and practical property development experience.</p>
         </div>
         
@@ -849,7 +849,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-4xl font-bold mb-4 font-kernel">Stay Updated</h2>
-              <p className="text-white/70 text-lg mb-12 font-kernel">
+              <p className="text-white/70 text-lg mb-12 community-text">
                 Join our community and stay informed about the latest updates and features
               </p>
 
@@ -857,14 +857,14 @@ const LandingPage = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button 
                     onClick={() => setRegistrationType('company')}
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-kernel transition-all flex items-center justify-center gap-2"
+                    className="action-button bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 transition-all"
                   >
                     <i className="ri-building-line"></i>
                     Register as Company
                   </button>
                   <button 
                     onClick={() => setRegistrationType('individual')}
-                    className="border border-white/30 hover:border-white/50 bg-black/30 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-kernel transition-all flex items-center justify-center gap-2"
+                    className="action-button border border-white/30 hover:border-white/50 bg-black/30 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
                   >
                     <i className="ri-user-line"></i>
                     Register as Individual

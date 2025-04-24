@@ -11,6 +11,9 @@ module.exports = {
         primary: "#8A2BE2",
         secondary: "#FF6B6B",
       },
+      fontFamily: {
+        kernel: ['"Kernel-Bold"', 'sans-serif'],
+      },
       borderRadius: {
         'none': '0px',
         'sm': '4px',
