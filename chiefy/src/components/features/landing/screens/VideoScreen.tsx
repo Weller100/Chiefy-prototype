@@ -19,12 +19,12 @@ export const VideoScreen = ({ setCurrentScreen, videoRef }: VideoScreenProps) =>
       <source src="/images/intro-video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <div className="absolute bottom-4 right-4">
+    <div className="absolute bottom-4 right-0">
       <button 
         onClick={() => setCurrentScreen("download")}
         className="bg-primary text-white px-8 py-3 font-semibold shadow-lg text-base"
       >
-        Skip Intro
+        Skip &rarr;
       </button>
     </div>
   </div>

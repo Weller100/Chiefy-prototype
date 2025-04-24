@@ -7,12 +7,20 @@ import { DownloadScreen } from "./landing/screens/DownloadScreen";
 import { MainScreen } from "./landing/screens/MainScreen";
 import ChatBot from './ChatBot';
 import LoginModal from './LoginModal';
+import DreamTeamPage from '@/app/dream-team/page';
 
 const LandingPage = () => {
   const [currentScreen, setCurrentScreen] = useState("video");
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
+  const [registrationType, setRegistrationType] = useState<'company' | 'individual' | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    companyName: '',
+    email: '',
+    phone: ''
+  });
+  
   useEffect(() => {
     if (videoRef.current && currentScreen === "video") {
       const playVideo = async () => {
@@ -28,24 +36,26 @@ const LandingPage = () => {
 
   if (currentScreen === "video") {
     return (
-      <>
-        <VideoScreen 
-          setCurrentScreen={setCurrentScreen} 
-          videoRef={videoRef} 
-        />
-        <ChatBot />
-      </>
+      <VideoScreen 
+        setCurrentScreen={setCurrentScreen} 
+        videoRef={videoRef} 
+      />
     );
   }
 
   if (currentScreen === "download") {
     return (
-      <>
-        <DownloadScreen 
-          setCurrentScreen={setCurrentScreen} 
-        />
-        <ChatBot />
-      </>
+      <DownloadScreen 
+        setCurrentScreen={setCurrentScreen} 
+      />
+    );
+  }
+
+  if (currentScreen === "dream-team") {
+    return (
+      <DreamTeamPage 
+        setCurrentScreen={setCurrentScreen} 
+      />
     );
   }
 
@@ -57,35 +67,85 @@ const LandingPage = () => {
         <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
           <div className="container mx-auto px-6 py-4 flex justify-between items-center">
             <Link href="#" className="flex items-center gap-2">
-              <Image src="https://static.readdy.ai/image/604526b099075072f9fc122e55328024/b41ffca8773352ad86add0ffd6c25b78.png" alt="Chiefy Logo" width={40} height={40} />
-              <span className="hero-title text-xl font-bold">Chiefy</span>
+              <Image 
+                src="/images/chiefy-ai.png" 
+                alt="Chiefy.AI" 
+                width={120} 
+                height={30} 
+                className="h-8 w-auto"
+                priority
+              />
             </Link>
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="#features" className="text-white/80 hover:text-white transition-colors">Features</Link>
-              <Link href="#how-it-works" className="text-white/80 hover:text-white transition-colors">How It Works</Link>
-              <Link href="#testimonials" className="text-white/80 hover:text-white transition-colors">Success Stories</Link>
-              <Link href="#pricing" className="text-white/80 hover:text-white transition-colors">Pricing</Link>
+              <a 
+                href="#features" 
+                className="text-white/80 hover:text-white transition-colors font-kernel"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Features
+              </a>
+              <a 
+                href="#how-it-works" 
+                className="text-white/80 hover:text-white transition-colors font-kernel"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#how-it-works')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                How It Works
+              </a>
+              <a 
+                href="#testimonials" 
+                className="text-white/80 hover:text-white transition-colors font-kernel"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#testimonials')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Success Stories
+              </a>
+              <a 
+                href="#pricing" 
+                className="text-white/80 hover:text-white transition-colors font-kernel"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Pricing
+              </a>
             </div>
             <div className="flex items-center gap-4">
               <button 
                 onClick={() => setIsLoginModalOpen(true)} 
-                className="text-white/80 hover:text-white transition-colors hidden md:block"
+                className="text-white/70 hover:text-white transition-colors font-kernel"
               >
-                Log In
+                Login
               </button>
-              <Link href="#" className="neon-button bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-button whitespace-nowrap">
-                Download
-              </Link>
-              <button className="md:hidden w-10 h-10 flex items-center justify-center">
-                <i className="ri-menu-line ri-lg"></i>
+              <button 
+                onClick={() => setCurrentScreen("download")}
+                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-kernel flex items-center gap-2 transition-all"
+              >
+                Download 
+                <i className="ri-arrow-down-line text-white"></i>
               </button>
             </div>
           </div>
         </nav>
 
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" style={{backgroundImage: "url('https://readdy.ai/api/search-image?query=Futuristic%20cityscape%20with%20neon-outlined%20skyscrapers%20and%20buildings%20in%20purple%2C%20pink%2C%20and%20orange%20gradients.%20Modern%20architecture%20with%20glowing%20windows%20and%20holographic%20elements.%20Perspective%20grid%20integrated%20into%20city%20streets.%20Starry%20sky%20backdrop%20transitioning%20from%20deep%20purple%20to%20pink%20and%20orange%20horizon.%20Digital%20particle%20effects%20suggesting%20AI%20analysis.%20Subtle%20construction%20drones%20and%20holographic%20scaffolding%20visible%20between%20buildings.&width=1920&height=1080&seq=hero1&orientation=landscape')", backgroundSize: "cover", backgroundPosition: "center"}}>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+            {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" 
+          style={{
+            backgroundImage: "url('https://readdy.ai/api/search-image?query=Futuristic%20cityscape%20with%20neon-outlined%20skyscrapers%20and%20buildings%20in%20purple%2C%20pink%2C%20and%20orange%20gradients.%20Modern%20architecture%20with%20glowing%20windows%20and%20holographic%20elements.%20Perspective%20grid%20integrated%20into%20city%20streets.%20Starry%20sky%20backdrop%20transitioning%20from%20deep%20purple%20to%20pink%20and%20orange%20horizon.%20Digital%20particle%20effects%20suggesting%20AI%20analysis.%20Subtle%20construction%20drones%20and%20holographic%20scaffolding%20visible%20between%20buildings.&width=1920&height=1080&seq=hero1&orientation=landscape')", 
+            backgroundSize: "cover", 
+            backgroundPosition: "center"
+          }}
+        >
+          {/* Slightly darker overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a0b2e]/80 via-[#1a0b2e]/70 to-[#1a0b2e]/60"></div>
           {/* Animated Grid Lines */}
           <div className="absolute inset-0 grid-bg opacity-30"></div>
           {/* Floating Elements */}
@@ -95,7 +155,7 @@ const LandingPage = () => {
             <div className="max-w-3xl">
               <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
                 Accelerate Your <span className="gradient-text">Property Development</span> Career
-              </h1>
+                    </h1>
               <p className="text-xl md:text-2xl text-white/80 mb-8">
                 AI-powered mentoring that transforms industry novices into development experts through immersive, gamified learning experiences.
               </p>
@@ -106,17 +166,17 @@ const LandingPage = () => {
                 <Link href="#how-it-works" className="border border-white/30 hover:border-white/50 bg-black/30 backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-2">
                   <i className="ri-play-circle-line ri-lg"></i> Watch Demo
                 </Link>
-              </div>
+                  </div>
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">90%</h3>
                   <p className="text-white/70 text-sm">Employment Rate</p>
-                </div>
+                      </div>
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">15K+</h3>
                   <p className="text-white/70 text-sm">Active Learners</p>
-                </div>
+                    </div>
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">200+</h3>
                   <p className="text-white/70 text-sm">Industry Partners</p>
@@ -129,44 +189,44 @@ const LandingPage = () => {
             </div>
           </div>
           {/* Animated Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
             <p className="text-white/70 mb-2 text-sm">Scroll to explore</p>
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+                <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
               <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
-            </div>
-          </div>
-        </section>
+                </div>
+              </div>
+            </section>
 
         {/* Trusted By Section */}
         <section className="py-16 bg-gradient-to-b from-black to-black/95">
-          <div className="container mx-auto px-6">
+              <div className="container mx-auto px-6">
             <h2 className="text-center text-white/70 mb-10 text-lg">TRUSTED BY LEADING UNIVERSITIES & COMPANIES</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
-              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                <i className="ri-building-4-line ri-2x"></i>
-                <span className="font-semibold">RMIT University</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                <i className="ri-building-2-line ri-2x"></i>
-                <span className="font-semibold">Melbourne University</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                <i className="ri-government-line ri-2x"></i>
-                <span className="font-semibold">Deakin University</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                <i className="ri-home-gear-line ri-2x"></i>
-                <span className="font-semibold">Stadiums Tasmania</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                <i className="ri-building-line ri-2x"></i>
-                <span className="font-semibold">Oliver Hume</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                <i className="ri-community-line ri-2x"></i>
-                <span className="font-semibold">Bryant Alsop Architects</span>
-              </div>
-            </div>
+                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                      <i className="ri-building-4-line ri-2x"></i>
+                      <span className="font-semibold">RMIT University</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                      <i className="ri-building-2-line ri-2x"></i>
+                      <span className="font-semibold">Melbourne University</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                      <i className="ri-government-line ri-2x"></i>
+                      <span className="font-semibold">Deakin University</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                      <i className="ri-home-gear-line ri-2x"></i>
+                      <span className="font-semibold">Stadiums Tasmania</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                      <i className="ri-building-line ri-2x"></i>
+                      <span className="font-semibold">Oliver Hume</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                      <i className="ri-community-line ri-2x"></i>
+                      <span className="font-semibold">Bryant Alsop Architects</span>
+                    </div>
+                  </div>
           </div>
         </section>
 
@@ -186,7 +246,10 @@ const LandingPage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3">AI Development Coach</h3>
                 <p className="text-white/70 mb-4">Personalized AI mentor that adapts to your learning style and provides real-time feedback on your delivery strategies.</p>
-                <div className="flex items-center gap-2 text-primary">
+                <div className="flex items-center gap-2 text-primary cursor-pointer" onClick={() => {
+                  const contactSection = document.getElementById('contact-us');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   <span>Learn more</span>
                   <i className="ri-arrow-right-line"></i>
                 </div>
@@ -200,7 +263,10 @@ const LandingPage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Development Simulator</h3>
                 <p className="text-white/70 mb-4">Practice with realistic property development scenarios that simulate market conditions, zoning challenges, and financial constraints.</p>
-                <div className="flex items-center gap-2 text-secondary">
+                <div className="flex items-center gap-2 text-secondary cursor-pointer" onClick={() => {
+                  const contactSection = document.getElementById('contact-us');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   <span>Learn more</span>
                   <i className="ri-arrow-right-line"></i>
                 </div>
@@ -214,7 +280,10 @@ const LandingPage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Achievement System</h3>
                 <p className="text-white/70 mb-4">Earn badges, certifications, and industry recognition as you complete projects and master development skills.</p>
-                <div className="flex items-center gap-2 text-primary">
+                <div className="flex items-center gap-2 text-primary cursor-pointer" onClick={() => {
+                  const contactSection = document.getElementById('contact-us');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   <span>Learn more</span>
                   <i className="ri-arrow-right-line"></i>
                 </div>
@@ -228,7 +297,10 @@ const LandingPage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Industry Network</h3>
                 <p className="text-white/70 mb-4">Connect with peers, mentors and industry professionals and build your own property development team.</p>
-                <div className="flex items-center gap-2 text-secondary">
+                <div className="flex items-center gap-2 text-secondary cursor-pointer" onClick={() => {
+                  const contactSection = document.getElementById('contact-us');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   <span>Learn more</span>
                   <i className="ri-arrow-right-line"></i>
                 </div>
@@ -242,12 +314,15 @@ const LandingPage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Data Analytics</h3>
                 <p className="text-white/70 mb-4">Access real-time market data and AI-powered insights to inform your staff management and training decision.</p>
-                <div className="flex items-center gap-2 text-primary">
+                <div className="flex items-center gap-2 text-primary cursor-pointer" onClick={() => {
+                  const contactSection = document.getElementById('contact-us');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   <span>Learn more</span>
                   <i className="ri-arrow-right-line"></i>
                 </div>
-              </div>
-              
+                </div>
+
               {/* Feature 6 */}
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/20 rounded-full blur-xl"></div>
@@ -256,7 +331,10 @@ const LandingPage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3">Project Personalisation</h3>
                 <p className="text-white/70 mb-4">Customize and personalize your development projects with advanced tools, profiling and templates to your projects unique requirements.</p>
-                <div className="flex items-center gap-2 text-secondary">
+                <div className="flex items-center gap-2 text-secondary cursor-pointer" onClick={() => {
+                  const contactSection = document.getElementById('contact-us');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   <span>Learn more</span>
                   <i className="ri-arrow-right-line"></i>
                 </div>
@@ -385,14 +463,14 @@ const LandingPage = () => {
                   </div>
                   <p className="text-white/60 text-sm">Complete your development career path in as little as 12 months with our accelerated program. Industry average is 3-5 years.</p>
                 </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
         {/* Testimonials Section */}
         <section id="testimonials" className="py-20 bg-black">
-          <div className="container mx-auto px-6">
+              <div className="container mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="hero-title text-4xl font-bold mb-4">Success <span className="gradient-text">Stories</span></h2>
               <p className="text-white/70 text-lg">Hear from professionals who transformed their careers with our platform.</p>
@@ -442,8 +520,8 @@ const LandingPage = () => {
                   <i className="ri-building-line"></i>
                   <span>Now at: Brookfield Properties</span>
                 </div>
-              </div>
-              
+                  </div>
+
               {/* Testimonial 3 */}
               <div className="testimonial-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
                 <div className="flex items-center gap-4 mb-6">
@@ -608,8 +686,8 @@ const LandingPage = () => {
                 <a href="#" className="neon-button bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-button text-center font-bold whitespace-nowrap block">
                   Start Free Trial
                 </a>
-              </div>
-              
+                  </div>
+
               {/* Enterprise Plan */}
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 flex-1 relative overflow-hidden">
                 <div className="mb-8">
@@ -738,31 +816,108 @@ const LandingPage = () => {
         </section>
 
         {/* Newsletter Section */}
-        <section className="py-16 bg-gradient-to-b from-black to-black/95">
+        <section className="py-20 bg-gradient-to-b from-black to-purple-900/20">
           <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto">
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-                <div className="text-center mb-8">
-                  <h3 className="hero-title text-2xl font-bold mb-3">Stay Updated</h3>
-                  <p className="text-white/70">Get the latest property development insights and platform updates.</p>
-                </div>
-                <form className="flex flex-col sm:flex-row gap-4">
-                  <input type="email" placeholder="Enter your email" className="flex-1 bg-white/10 border-none text-white px-4 py-3 rounded placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50" />
-                  <button type="submit" className="neon-button bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-button text-center font-bold whitespace-nowrap">
-                    Subscribe
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-4xl font-bold mb-4 font-kernel">Stay Updated</h2>
+              <p className="text-white/70 text-lg mb-12 font-kernel">
+                Join our community and stay informed about the latest updates and features
+              </p>
+
+              {!registrationType ? (
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button 
+                    onClick={() => setRegistrationType('company')}
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-kernel transition-all flex items-center justify-center gap-2"
+                  >
+                    <i className="ri-building-line"></i>
+                    Register as Company
                   </button>
-                </form>
-                <div className="mt-4 flex items-center gap-2">
-                  <label className="custom-checkbox flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" className="hidden" />
-                    <span className="checkmark"></span>
-                    <span className="text-white/70 text-sm">I agree to receive marketing communications</span>
-                  </label>
+                  <button 
+                    onClick={() => setRegistrationType('individual')}
+                    className="border border-white/30 hover:border-white/50 bg-black/30 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-kernel transition-all flex items-center justify-center gap-2"
+                  >
+                    <i className="ri-user-line"></i>
+                    Register as Individual
+                  </button>
                 </div>
-              </div>
+              ) : (
+                <div className="max-w-md mx-auto">
+                  <button
+                    onClick={() => setRegistrationType(null)}
+                    className="mb-6 text-white/70 hover:text-white flex items-center gap-2 transition-all font-kernel"
+                  >
+                    <i className="ri-arrow-left-line"></i>
+                    Back to Options
+                  </button>
+
+                  <form onSubmit={(e) => {
+                    e.preventDefault();
+                    // Handle form submission
+                    console.log(formData);
+                  }} 
+                  className="space-y-4"
+                  >
+                    {registrationType === 'company' ? (
+                      <div>
+                        <label className="block text-white/70 mb-2 font-kernel">Company Name</label>
+                        <input
+                          type="text"
+                          value={formData.companyName}
+                          onChange={(e) => setFormData({...formData, companyName: e.target.value})}
+                          className="w-full bg-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 border border-purple-500/20"
+                          required
+                        />
+                      </div>
+                    ) : (
+                      <div>
+                        <label className="block text-white/70 mb-2 font-kernel">Name</label>
+                        <input
+                          type="text"
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          className="w-full bg-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 border border-purple-500/20"
+                          required
+                        />
+                      </div>
+                    )}
+                    
+                    <div>
+                      <label className="block text-white/70 mb-2 font-kernel">Email</label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="w-full bg-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 border border-purple-500/20"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-white/70 mb-2 font-kernel">Phone Number</label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        className="w-full bg-white/5 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 border border-purple-500/20"
+                        required
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-lg font-kernel transition-all mt-6"
+                    >
+                      Register Now
+                    </button>
+                  </form>
+                </div>
+              )}
             </div>
           </div>
         </section>
+
+        
 
         {/* Footer */}
         <footer className="py-16 bg-black border-t border-white/10">

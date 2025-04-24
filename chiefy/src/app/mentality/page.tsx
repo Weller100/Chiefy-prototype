@@ -1,9 +1,8 @@
-import { BackButton } from '@/components/shared/BackButton';
-import { useState } from 'react';
+"use client";
 
-interface MentalityOverlayProps {
-  onClose: () => void;
-}
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { BackButton } from '@/components/shared/BackButton';
 
 interface FormData {
   name: string;
@@ -12,7 +11,8 @@ interface FormData {
   phone: string;
 }
 
-export const MentalityOverlay = ({ onClose }: MentalityOverlayProps) => {
+export default function MentalityPage() {
+  const router = useRouter();
   const [registrationType, setRegistrationType] = useState<'company' | 'individual' | null>(null);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -21,59 +21,77 @@ export const MentalityOverlay = ({ onClose }: MentalityOverlayProps) => {
     phone: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
     alert('Registration successful!');
-    onClose();
+    router.push('/');
   };
 
   return (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <BackButton onClick={onClose} />
+    <div className="min-h-screen bg-[#0B1120] text-white py-20 px-4">
+      <BackButton onClick={() => router.push('/')} />
       
-      <div className="bg-[#0A0A0A] rounded-2xl p-12 max-w-3xl w-full relative">
-        {registrationType && (
-          <button
-            onClick={() => setRegistrationType(null)}
-            className="absolute top-6 left-6 text-white/70 hover:text-white flex items-center gap-2"
-          >
-            <i className="ri-arrow-left-line"></i>
-            Back to Options
-          </button>
-        )}
-
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold mb-8">
             Could you benefit from some{" "}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
               Guidance
             </span>{" "}
             within your career?
-          </h2>
-          
-          {!registrationType ? (
-            <>
-              <p className="text-white/70 mb-8 text-lg">
-                Have you had a Mentor but haven't spent enough time with them to answer all your questions?
-              </p>
-              <div className="flex gap-6 justify-center">
-                <button
-                  onClick={() => setRegistrationType('company')}
-                  className="bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 transition-all"
-                >
-                  Register as Company
-                </button>
-                <button
-                  onClick={() => setRegistrationType('individual')}
-                  className="bg-pink-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-pink-700 transition-all"
-                >
-                  Register as Individual
-                </button>
-              </div>
-            </>
-          ) : (
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6">
+          </h1>
+
+          <div className="space-y-6 text-lg text-white/70 max-w-3xl mx-auto">
+            <p>
+              Have you had a Mentor but haven't spent enough time with them to answer all your questions?
+            </p>
+            <p>
+              Or have you undertaken a renovation but weren't sure what questions to ask your builder or trades?
+            </p>
+            <p className="text-xl text-white font-semibold">
+              Chiefy has you covered!
+            </p>
+            <p>
+              Chief's Mentality Overlay doesn't just assess your knowledge but provides realtime feedback and insights tailored to your individual needs.
+            </p>
+            <p className="italic">
+              At Chiefy we believe that time is more valuable than money. You can get more money, but you cannot get more time... and we are in the business of saving time - Because in the end Time is Money!
+            </p>
+          </div>
+        </div>
+
+        {!registrationType ? (
+          <div className="text-center">
+            <p className="text-2xl font-semibold mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Sign up for our Meetup today...
+            </p>
+            <div className="flex gap-6 justify-center">
+              <button
+                onClick={() => setRegistrationType('company')}
+                className="bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 transition-all"
+              >
+                Register as Company
+              </button>
+              <button
+                onClick={() => setRegistrationType('individual')}
+                className="bg-pink-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-pink-700 transition-all"
+              >
+                Register as Individual
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="max-w-md mx-auto">
+            <button
+              onClick={() => setRegistrationType(null)}
+              className="mb-8 text-white/70 hover:text-white flex items-center gap-2"
+            >
+              <i className="ri-arrow-left-line"></i>
+              Back to Options
+            </button>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
               {registrationType === 'company' ? (
                 <div>
                   <label className="block text-white/70 mb-2">Company Name*</label>
@@ -127,9 +145,9 @@ export const MentalityOverlay = ({ onClose }: MentalityOverlayProps) => {
                 Register Now
               </button>
             </form>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
-}; 
+} 
