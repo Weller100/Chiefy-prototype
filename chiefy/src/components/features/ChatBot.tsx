@@ -5,127 +5,137 @@ import Image from 'next/image';
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([
-    {
-      sender: 'bot',
-      message: 'Hi there! 👋 I\'m Chiefy, your construction assistant. How can I help you today?',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    }
-  ]);
+  const [email, setEmail] = useState('');
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!message.trim()) return;
-    
-    // Add user message to chat
-    const userMessage = {
-      sender: 'user',
-      message: message.trim(),
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    };
-    
-    setChatHistory(prev => [...prev, userMessage]);
+    if (!email || !message) return;
+
+    // Here you would implement the logic to save to Google Docs
+    // For now, just show success message
+    setHasSubmitted(true);
     setMessage('');
-    
-    // Simulate bot response after a short delay
-    setTimeout(() => {
-      const botResponse = {
-        sender: 'bot',
-        message: "I'd be happy to help with your construction query. Could you provide more details about your project?",
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-      
-      setChatHistory(prev => [...prev, botResponse]);
-    }, 1000);
+    setEmail('');
   };
 
   return (
-    <React.Fragment>
-      {/* Floating chat button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 shadow-lg flex items-center justify-center z-40 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300"
-      >
-        {isOpen ? (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-          </svg>
-        )}
-      </button>
-      
-      {/* Chat panel */}
-      <div 
-        className={`fixed bottom-24 right-6 w-96 max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-xl z-40 transition-all duration-300 overflow-hidden ${
-          isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-        }`}
-      >
-        {/* Chat header */}
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+    <div className="fixed bottom-4 right-4 z-50">
+      {!isOpen ? (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center hover:from-purple-700 hover:to-pink-700 transition-all group animate-bounce"
+        >
+          <div className="relative">
+            {/* Online indicator */}
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+            
+            {/* Chat icon */}
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-7 w-7 group-hover:scale-110 transition-transform" 
+              viewBox="0 0 24 24" 
+              fill="currentColor"
+            >
+              <path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10 1.5 0 2.95-.34 4.28-.94l3.86 1.07-1.07-3.86c.6-1.33.94-2.78.94-4.28C20 6.48 15.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+              <path d="M8 13h8v2H8zm0-4h8v2H8z"/>
+            </svg>
+
+            {/* Notification dot */}
+            <div className="absolute -top-1 -right-1 w-3 h-3">
+              <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></div>
+              <div className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></div>
+            </div>
+          </div>
+        </button>
+      ) : (
+        <div className="bg-[#0A0A0A] rounded-2xl w-[380px] shadow-xl border border-white/10">
+          {/* Header */}
+          <div className="p-4 border-b border-white/10 flex items-center justify-between">
+            <div className="flex items-center gap-3">
               <Image
-                src="/images/chiefy-logo.png"
-                alt="Chiefy Assistant"
+                src="/chiefy-logo.png"
+                alt="Chiefy"
                 width={32}
                 height={32}
                 className="rounded-full"
               />
+              <h3 className="font-semibold text-white">Chiefy Chat</h3>
             </div>
-            <div>
-              <h3 className="font-semibold text-white">Chiefy Assistant</h3>
-              <p className="text-xs text-white/70">Online | Construction Expert</p>
-            </div>
-          </div>
-        </div>
-        
-        {/* Chat messages */}
-        <div className="h-80 overflow-y-auto p-4 bg-gray-50">
-          <div className="space-y-4">
-            {chatHistory.map((chat, index) => (
-              <div key={index} className={`flex ${chat.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div 
-                  className={`max-w-[80%] rounded-lg p-3 ${
-                    chat.sender === 'user' 
-                      ? 'bg-purple-600 text-white rounded-br-none' 
-                      : 'bg-gray-200 text-gray-800 rounded-bl-none'
-                  }`}
-                >
-                  <p className="text-sm">{chat.message}</p>
-                  <span className={`text-xs block mt-1 ${chat.sender === 'user' ? 'text-purple-200' : 'text-gray-500'}`}>
-                    {chat.timestamp}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Chat input */}
-        <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-4">
-          <div className="flex items-center gap-2">
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type your message..."
-              className="flex-1 bg-gray-100 rounded-full py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
-            />
-            <button 
-              type="submit"
-              className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 transition"
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-2 hover:bg-white/5 rounded-full text-white/70 hover:text-white"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-        </form>
-      </div>
-    </React.Fragment>
+
+          {/* Chat Content */}
+          <div className="p-6">
+            {!hasSubmitted ? (
+              <>
+                <div className="mb-6">
+                  <p className="text-lg mb-2 text-white">G'day! Chiefy's here ready to give you a hand...</p>
+                  <p className="text-white/70">what can I sort out for you today?</p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-white/70 mb-2 text-sm">Your Email</label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500 transition-all text-sm"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-white/70 mb-2 text-sm">Message</label>
+                    <textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500 transition-all text-sm min-h-[100px]"
+                      placeholder="Type your message here..."
+                      required
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:from-purple-700 hover:to-pink-700"
+                  >
+                    Send Message
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="text-center py-8">
+                <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold mb-2 text-white">Thanks for reaching out!</h4>
+                <p className="text-white/70 mb-6">We'll get back to you as soon as possible.</p>
+                <button
+                  onClick={() => setHasSubmitted(false)}
+                  className="text-purple-500 hover:text-purple-400"
+                >
+                  Send another message
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
