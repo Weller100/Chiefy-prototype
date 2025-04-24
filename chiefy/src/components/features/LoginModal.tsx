@@ -1,8 +1,9 @@
+"use client";
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { XIcon } from 'lucide-react';
 import Image from 'next/image';
-import { FcGoogle } from 'react-icons/fc';
 import { 
+  FaGoogle,
   FaFacebookF,
   FaLinkedinIn,
   FaApple 
@@ -23,12 +24,13 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Authentication coming soon!');
+    alert(`${isLogin ? 'Login' : 'Signup'} successful!`);
     onClose();
   };
 
-  const socialLogin = (provider: string) => {
+  const handleSocialLogin = (provider: string) => {
     alert(`${provider} login coming soon!`);
+    onClose();
   };
 
   if (!isOpen) return null;
@@ -40,7 +42,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           onClick={onClose}
           className="absolute top-4 right-4 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10"
         >
-          <X className="h-6 w-6" />
+          <XIcon className="h-6 w-6" />
         </button>
 
         <div className="text-center mb-8">
@@ -55,38 +57,33 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           </p>
         </div>
 
-        {/* Social Login Buttons */}
         <div className="flex justify-center gap-4 mb-8">
-          {/* Google */}
           <button
-            onClick={() => socialLogin('Google')}
+            onClick={() => handleSocialLogin('Google')}
             className="p-3 bg-white hover:bg-gray-100 rounded-full transition-all"
             aria-label="Sign in with Google"
           >
-            <FcGoogle className="w-6 h-6" />
+            <FaGoogle className="w-6 h-6" />
           </button>
 
-          {/* Facebook */}
           <button
-            onClick={() => socialLogin('Facebook')}
+            onClick={() => handleSocialLogin('Facebook')}
             className="p-3 bg-[#1877F2] hover:bg-[#0C63D4] rounded-full transition-all"
             aria-label="Sign in with Facebook"
           >
             <FaFacebookF className="w-6 h-6 text-white" />
           </button>
 
-          {/* LinkedIn */}
           <button
-            onClick={() => socialLogin('LinkedIn')}
+            onClick={() => handleSocialLogin('LinkedIn')}
             className="p-3 bg-[#0A66C2] hover:bg-[#004182] rounded-full transition-all"
             aria-label="Sign in with LinkedIn"
           >
             <FaLinkedinIn className="w-6 h-6 text-white" />
           </button>
 
-          {/* Apple */}
           <button
-            onClick={() => socialLogin('Apple')}
+            onClick={() => handleSocialLogin('Apple')}
             className="p-3 bg-black hover:bg-gray-900 rounded-full transition-all border border-white/10"
             aria-label="Sign in with Apple"
           >
@@ -99,11 +96,10 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
             <div className="w-full border-t border-white/10"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-4 bg-[#0A0A0A] text-white/50">Or continue with email</span>
+            <span className="px-2 bg-[#0A0A0A] text-white/50">Or continue with</span>
           </div>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <div>
@@ -113,7 +109,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                 className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-purple-500 transition-all"
-                required={!isLogin}
+                required
               />
             </div>
           )}
@@ -142,7 +138,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all"
+            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-all mt-8"
           >
             {isLogin ? 'Sign In' : 'Create Account'}
           </button>
