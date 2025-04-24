@@ -26,6 +26,10 @@ const LandingPage = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToStayUpdated = () => {
+    document.querySelector('#stay-updated')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     if (videoRef.current && currentScreen === "video") {
       const playVideo = async () => {
@@ -135,7 +139,7 @@ const LandingPage = () => {
                 className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all"
               >
                 Download 
-                <i className="ri-arrow-down-line text-white"></i>
+                <span>↓</span>
               </button>
             </div>
           </div>
@@ -266,15 +270,15 @@ const LandingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Feature 1 - AI Development Coach */}
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-              <div className="text-purple-500 text-2xl">⭕</div>
+              <div className="text-purple-500 text-2xl">🤖</div>
             </div>
             <h3 className="text-xl font-bold mb-3 text-white">AI Development Coach</h3>
             <p className="text-white/70 mb-4">Personalized AI mentor that adapts to your learning style and provides real-time feedback on your delivery strategies.</p>
             <div 
               className="flex items-center gap-2 text-purple-500 cursor-pointer hover:text-purple-400 transition-colors" 
-              onClick={handleLearnMore}
+              onClick={scrollToStayUpdated}
             >
               <span>Learn more</span>
               <span>→</span>
@@ -283,7 +287,7 @@ const LandingPage = () => {
           
           {/* Feature 2 - Development Simulator */}
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/20 rounded-full blur-xl"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
               <div className="text-red-400 text-2xl">🎮</div>
             </div>
@@ -291,7 +295,7 @@ const LandingPage = () => {
             <p className="text-white/70 mb-4">Practice with realistic property development scenarios that simulate market conditions, zoning challenges, and financial constraints.</p>
             <div 
               className="flex items-center gap-2 text-red-400 cursor-pointer hover:text-red-300 transition-colors" 
-              onClick={handleLearnMore}
+              onClick={scrollToStayUpdated}
             >
               <span>Learn more</span>
               <span>→</span>
@@ -300,15 +304,15 @@ const LandingPage = () => {
           
           {/* Feature 3 - Achievement System */}
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-              <div className="text-purple-500 text-2xl">💎</div>
+              <div className="text-purple-500 text-2xl">🏆</div>
             </div>
             <h3 className="text-xl font-bold mb-3 text-white">Achievement System</h3>
             <p className="text-white/70 mb-4">Earn badges, certifications, and industry recognition as you complete projects and master development skills.</p>
             <div 
               className="flex items-center gap-2 text-purple-500 cursor-pointer hover:text-purple-400 transition-colors" 
-              onClick={handleLearnMore}
+              onClick={scrollToStayUpdated}
             >
               <span>Learn more</span>
               <span>→</span>
@@ -317,7 +321,7 @@ const LandingPage = () => {
           
           {/* Feature 4 - Industry Network */}
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/20 rounded-full blur-xl"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
               <div className="text-red-400 text-2xl">👥</div>
             </div>
@@ -325,7 +329,7 @@ const LandingPage = () => {
             <p className="text-white/70 mb-4">Connect with peers, mentors and industry professionals and build your own property development team.</p>
             <div 
               className="flex items-center gap-2 text-red-400 cursor-pointer hover:text-red-300 transition-colors" 
-              onClick={handleLearnMore}
+              onClick={scrollToStayUpdated}
             >
               <span>Learn more</span>
               <span>→</span>
@@ -334,7 +338,7 @@ const LandingPage = () => {
           
           {/* Feature 5 - Data Analytics */}
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
               <div className="text-purple-500 text-2xl">📊</div>
             </div>
@@ -342,7 +346,7 @@ const LandingPage = () => {
             <p className="text-white/70 mb-4">Access real-time market data and AI-powered insights to inform your staff management and training decision.</p>
             <div 
               className="flex items-center gap-2 text-purple-500 cursor-pointer hover:text-purple-400 transition-colors" 
-              onClick={handleLearnMore}
+              onClick={scrollToStayUpdated}
             >
               <span>Learn more</span>
               <span>→</span>
@@ -351,15 +355,15 @@ const LandingPage = () => {
           
           {/* Feature 6 - Project Personalization */}
           <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/20 rounded-full blur-xl"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
             <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
-              <div className="text-red-400 text-2xl">⚪</div>
+              <div className="text-red-400 text-2xl">⚡</div>
             </div>
             <h3 className="text-xl font-bold mb-3 text-white">Project Personalization</h3>
             <p className="text-white/70 mb-4">Customize and personalize your development projects with advanced tools, profiling and templates to your projects unique requirements.</p>
             <div 
               className="flex items-center gap-2 text-red-400 cursor-pointer hover:text-red-300 transition-colors" 
-              onClick={handleLearnMore}
+              onClick={scrollToStayUpdated}
             >
               <span>Learn more</span>
               <span>→</span>
@@ -662,7 +666,7 @@ const LandingPage = () => {
               </div>
               
               {/* Pro Plan */}
-              <div className="bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm rounded-xl p-8 border border-white/20 flex-1 relative overflow-hidden lg:scale-105 z-10">
+              <div className="developer-plan backdrop-blur-sm rounded-xl p-8 border border-white/20 flex-1 relative overflow-hidden lg:scale-105 z-10">
                 <div className="absolute top-5 right-5 bg-primary text-white text-xs px-3 py-1 rounded-full">
                   MOST POPULAR
                 </div>
@@ -845,7 +849,7 @@ const LandingPage = () => {
         </section>
 
         {/* Newsletter Section */}
-        <section className="py-20 bg-gradient-to-b from-black to-purple-900/20">
+        <section id="stay-updated" className="py-20 bg-gradient-to-b from-black to-purple-900/20">
           <div className="container mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-4xl font-bold mb-4 font-kernel">Stay Updated</h2>
@@ -857,9 +861,9 @@ const LandingPage = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button 
                     onClick={() => setRegistrationType('company')}
-                    className="action-button bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 transition-all"
+                    className="action-button bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 transition-all flex items-center justify-center gap-2"
                   >
-                    <i className="ri-building-line"></i>
+                    <i className="ri-building-4-line"></i>
                     Register as Company
                   </button>
                   <button 
@@ -874,9 +878,9 @@ const LandingPage = () => {
                 <div className="max-w-md mx-auto">
                   <button
                     onClick={() => setRegistrationType(null)}
-                    className="mb-6 text-white/70 hover:text-white flex items-center gap-2 transition-all font-kernel"
+                    className="mb-6 text-white/70 hover:text-white flex items-center gap-2 transition-all"
                   >
-                    <i className="ri-arrow-left-line"></i>
+                    <span>←</span>
                     Back to Options
                   </button>
 

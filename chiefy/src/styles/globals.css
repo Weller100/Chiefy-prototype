@@ -36,7 +36,6 @@ h2 {
 }
 
 .gradient-text {
-  font-family: "Kernel-Bold", sans-serif !important;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -59,9 +58,17 @@ h2 {
   font-family: "Kernel-Bold", sans-serif;
 }
 
-/* Override font for specific elements */
-.registration-text,
-.community-text,
-.action-button {
-  font-family: Inter, sans-serif !important;
+/* Feature card hover effect */
+.feature-card {
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Developer plan color fix */
+.developer-plan {
+  background-image: linear-gradient(135deg, #1f072e, #30091f);
+  backdrop-filter: blur(6px);
 }

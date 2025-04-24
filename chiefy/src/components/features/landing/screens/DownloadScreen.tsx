@@ -19,8 +19,8 @@ export const DownloadScreen = ({ setCurrentScreen }: DownloadScreenProps) => (
     
     <div className="text-center px-6 max-w-4xl mx-auto">
       <div className="mb-16">
-        <h1 className="text-7xl md:text-8xl font-bold tracking-tight">
-        <span className="text-white ml-4">DOWNLOAD CHIEFY</span>
+        <h1 className="text-7xl md:text-8xl font-kernel-bold tracking-tight">
+        DOWNLOAD <span className="gradient-text">CHIEFY</span>
         </h1>
       </div>
       
