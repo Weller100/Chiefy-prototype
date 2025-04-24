@@ -1,0 +1,842 @@
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { VideoScreen } from "./landing/screens/VideoScreen";
+import { DownloadScreen } from "./landing/screens/DownloadScreen";
+import { MainScreen } from "./landing/screens/MainScreen";
+import ChatBot from './ChatBot';
+import LoginModal from './LoginModal';
+
+const LandingPage = () => {
+  const [currentScreen, setCurrentScreen] = useState("video");
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current && currentScreen === "video") {
+      const playVideo = async () => {
+        try {
+          await videoRef.current?.play();
+        } catch (error) {
+          console.log("Autoplay failed:", error);
+        }
+      };
+      playVideo();
+    }
+  }, [currentScreen]);
+
+  if (currentScreen === "video") {
+    return (
+      <>
+        <VideoScreen 
+          setCurrentScreen={setCurrentScreen} 
+          videoRef={videoRef} 
+        />
+        <ChatBot />
+      </>
+    );
+  }
+
+  if (currentScreen === "download") {
+    return (
+      <>
+        <DownloadScreen 
+          setCurrentScreen={setCurrentScreen} 
+        />
+        <ChatBot />
+      </>
+    );
+  }
+
+  // Main screen - keeping all the existing content
+  return (
+    <>
+      <div className="bg-black text-white overflow-x-hidden">
+        {/* Navigation */}
+        <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+          <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+            <Link href="#" className="flex items-center gap-2">
+              <Image src="https://static.readdy.ai/image/604526b099075072f9fc122e55328024/b41ffca8773352ad86add0ffd6c25b78.png" alt="Chiefy Logo" width={40} height={40} />
+              <span className="hero-title text-xl font-bold">Chiefy</span>
+            </Link>
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="#features" className="text-white/80 hover:text-white transition-colors">Features</Link>
+              <Link href="#how-it-works" className="text-white/80 hover:text-white transition-colors">How It Works</Link>
+              <Link href="#testimonials" className="text-white/80 hover:text-white transition-colors">Success Stories</Link>
+              <Link href="#pricing" className="text-white/80 hover:text-white transition-colors">Pricing</Link>
+            </div>
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={() => setIsLoginModalOpen(true)} 
+                className="text-white/80 hover:text-white transition-colors hidden md:block"
+              >
+                Log In
+              </button>
+              <Link href="#" className="neon-button bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-button whitespace-nowrap">
+                Download
+              </Link>
+              <button className="md:hidden w-10 h-10 flex items-center justify-center">
+                <i className="ri-menu-line ri-lg"></i>
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" style={{backgroundImage: "url('https://readdy.ai/api/search-image?query=Futuristic%20cityscape%20with%20neon-outlined%20skyscrapers%20and%20buildings%20in%20purple%2C%20pink%2C%20and%20orange%20gradients.%20Modern%20architecture%20with%20glowing%20windows%20and%20holographic%20elements.%20Perspective%20grid%20integrated%20into%20city%20streets.%20Starry%20sky%20backdrop%20transitioning%20from%20deep%20purple%20to%20pink%20and%20orange%20horizon.%20Digital%20particle%20effects%20suggesting%20AI%20analysis.%20Subtle%20construction%20drones%20and%20holographic%20scaffolding%20visible%20between%20buildings.&width=1920&height=1080&seq=hero1&orientation=landscape')", backgroundSize: "cover", backgroundPosition: "center"}}>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+          {/* Animated Grid Lines */}
+          <div className="absolute inset-0 grid-bg opacity-30"></div>
+          {/* Floating Elements */}
+          <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: "1s"}}></div>
+          <div className="container mx-auto px-6 py-20 relative z-10">
+            <div className="max-w-3xl">
+              <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                Accelerate Your <span className="gradient-text">Property Development</span> Career
+              </h1>
+              <p className="text-xl md:text-2xl text-white/80 mb-8">
+                AI-powered mentoring that transforms industry novices into development experts through immersive, gamified learning experiences.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <Link href="#" className="neon-button bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-button text-center font-bold whitespace-nowrap">
+                  Start Your Journey
+                </Link>
+                <Link href="#how-it-works" className="border border-white/30 hover:border-white/50 bg-black/30 backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-2">
+                  <i className="ri-play-circle-line ri-lg"></i> Watch Demo
+                </Link>
+              </div>
+              {/* Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
+                  <h3 className="text-3xl font-bold gradient-text">90%</h3>
+                  <p className="text-white/70 text-sm">Employment Rate</p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
+                  <h3 className="text-3xl font-bold gradient-text">15K+</h3>
+                  <p className="text-white/70 text-sm">Active Learners</p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
+                  <h3 className="text-3xl font-bold gradient-text">200+</h3>
+                  <p className="text-white/70 text-sm">Industry Partners</p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
+                  <h3 className="text-3xl font-bold gradient-text">4.9/5</h3>
+                  <p className="text-white/70 text-sm">User Rating</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Animated Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+            <p className="text-white/70 mb-2 text-sm">Scroll to explore</p>
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Trusted By Section */}
+        <section className="py-16 bg-gradient-to-b from-black to-black/95">
+          <div className="container mx-auto px-6">
+            <h2 className="text-center text-white/70 mb-10 text-lg">TRUSTED BY LEADING UNIVERSITIES & COMPANIES</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
+              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                <i className="ri-building-4-line ri-2x"></i>
+                <span className="font-semibold">RMIT University</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                <i className="ri-building-2-line ri-2x"></i>
+                <span className="font-semibold">Melbourne University</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                <i className="ri-government-line ri-2x"></i>
+                <span className="font-semibold">Deakin University</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                <i className="ri-home-gear-line ri-2x"></i>
+                <span className="font-semibold">Stadiums Tasmania</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                <i className="ri-building-line ri-2x"></i>
+                <span className="font-semibold">Oliver Hume</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
+                <i className="ri-community-line ri-2x"></i>
+                <span className="font-semibold">Bryant Alsop Architects</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section id="features" className="py-20 bg-black">
+          <div className="container mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="hero-title text-4xl font-bold mb-4">Game-Changing <span className="gradient-text">Features</span></h2>
+              <p className="text-white/70 text-lg">Our Platform comines cutting edge AI with gamefied learning to create an immersive and practical property development experience.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Feature 1 */}
+              <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-primary/20 rounded-full blur-xl"></div>
+                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                  <i className="ri-ai-generate-line ri-2x text-primary"></i>
+                </div>
+                <h3 className="text-xl font-bold mb-3">AI Development Coach</h3>
+                <p className="text-white/70 mb-4">Personalized AI mentor that adapts to your learning style and provides real-time feedback on your delivery strategies.</p>
+                <div className="flex items-center gap-2 text-primary">
+                  <span>Learn more</span>
+                  <i className="ri-arrow-right-line"></i>
+                </div>
+              </div>
+              
+              {/* Feature 2 */}
+              <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/20 rounded-full blur-xl"></div>
+                <div className="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                  <i className="ri-gamepad-line ri-2x text-secondary"></i>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Development Simulator</h3>
+                <p className="text-white/70 mb-4">Practice with realistic property development scenarios that simulate market conditions, zoning challenges, and financial constraints.</p>
+                <div className="flex items-center gap-2 text-secondary">
+                  <span>Learn more</span>
+                  <i className="ri-arrow-right-line"></i>
+                </div>
+              </div>
+              
+              {/* Feature 3 */}
+              <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-primary/20 rounded-full blur-xl"></div>
+                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                  <i className="ri-vip-diamond-line ri-2x text-primary"></i>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Achievement System</h3>
+                <p className="text-white/70 mb-4">Earn badges, certifications, and industry recognition as you complete projects and master development skills.</p>
+                <div className="flex items-center gap-2 text-primary">
+                  <span>Learn more</span>
+                  <i className="ri-arrow-right-line"></i>
+                </div>
+              </div>
+              
+              {/* Feature 4 */}
+              <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/20 rounded-full blur-xl"></div>
+                <div className="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                  <i className="ri-team-line ri-2x text-secondary"></i>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Industry Network</h3>
+                <p className="text-white/70 mb-4">Connect with peers, mentors and industry professionals and build your own property development team.</p>
+                <div className="flex items-center gap-2 text-secondary">
+                  <span>Learn more</span>
+                  <i className="ri-arrow-right-line"></i>
+                </div>
+              </div>
+              
+              {/* Feature 5 */}
+              <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-primary/20 rounded-full blur-xl"></div>
+                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                  <i className="ri-bar-chart-box-line ri-2x text-primary"></i>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Data Analytics</h3>
+                <p className="text-white/70 mb-4">Access real-time market data and AI-powered insights to inform your staff management and training decision.</p>
+                <div className="flex items-center gap-2 text-primary">
+                  <span>Learn more</span>
+                  <i className="ri-arrow-right-line"></i>
+                </div>
+              </div>
+              
+              {/* Feature 6 */}
+              <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/20 rounded-full blur-xl"></div>
+                <div className="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                  <i className="ri-3d-cube-line ri-2x text-secondary"></i>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Project Personalisation</h3>
+                <p className="text-white/70 mb-4">Customize and personalize your development projects with advanced tools, profiling and templates to your projects unique requirements.</p>
+                <div className="flex items-center gap-2 text-secondary">
+                  <span>Learn more</span>
+                  <i className="ri-arrow-right-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section id="how-it-works" className="py-20 bg-gradient-to-b from-black to-black/95 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="w-full h-full grid-bg opacity-20"></div>
+          </div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="hero-title text-4xl font-bold mb-4">Your <span className="gradient-text">Learning Journey</span></h2>
+              <p className="text-white/70 text-lg">Follow a structured path from industry novice to development expert with our gamified learning system.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 relative">
+                  <div className="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-xl font-bold">1</div>
+                  {/* Level Progress */}
+                  <div className="mb-8">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-white/70">Current Level</span>
+                      <span className="text-white font-bold">Development Associate</span>
+                    </div>
+                    <div className="level-indicator">
+                      <div className="level-indicator" style={{width: "75%"}}></div>
+                    </div>
+                    <div className="flex justify-between text-xs mt-1">
+                      <span className="text-white/50">0 XP</span>
+                      <span className="text-white/50">1,500 / 2,000 XP</span>
+                    </div>
+                  </div>
+                  {/* Current Mission */}
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold mb-3">Current Mission: Site Acquisition</h3>
+                    <p className="text-white/70 mb-4">Complete a site analysis and acquisition strategy for a mixed-use development in an emerging neighborhood.</p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 flex items-center justify-center">
+                          <i className="ri-checkbox-circle-fill text-green-500"></i>
+                        </div>
+                        <span className="text-white/50">Market Research</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 flex items-center justify-center">
+                          <i className="ri-checkbox-circle-fill text-green-500"></i>
+                        </div>
+                        <span className="text-white/50">Zoning Analysis</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 flex items-center justify-center">
+                          <i className="ri-time-line text-primary"></i>
+                        </div>
+                        <span className="text-white">Financial Feasibility Study</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 flex items-center justify-center">
+                          <i className="ri-lock-line text-white/30"></i>
+                        </div>
+                        <span className="text-white/30">Acquisition Strategy</span>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" className="neon-button bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-button text-center font-bold whitespace-nowrap block">
+                    Continue Mission
+                  </a>
+                </div>
+                <div className="mt-8">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                      <i className="ri-trophy-line text-yellow-400"></i>
+                    </div>
+                    <div>
+                      <h4 className="font-bold">Career Progression</h4>
+                      <p className="text-white/70 text-sm">Track your journey from novice to expert</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                      <i className="ri-calendar-check-line text-green-400"></i>
+                    </div>
+                    <div>
+                      <h4 className="font-bold">Real-time Feedback</h4>
+                      <p className="text-white/70 text-sm">Get instant AI evaluation on your work</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 className="hero-title text-2xl font-bold mb-6">Development Career Path</h3>
+                <div className="space-y-6">
+                  <div className="relative pl-8 pb-6 border-l-2 border-white/10">
+                    <div className="absolute top-0 left-0 w-4 h-4 bg-green-500 rounded-full transform -translate-x-1/2"></div>
+                    <h4 className="font-bold text-green-400">Development Associate</h4>
+                    <p className="text-white/70">Master the fundamentals of property development, market analysis, and basic financial modeling.</p>
+                  </div>
+                  <div className="relative pl-8 pb-6 border-l-2 border-white/10">
+                    <div className="absolute top-0 left-0 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2"></div>
+                    <h4 className="font-bold text-primary">Development Manager</h4>
+                    <p className="text-white/70">Lead site acquisition, manage entitlements, and coordinate with design and construction teams.</p>
+                  </div>
+                  <div className="relative pl-8 pb-6 border-l-2 border-white/10">
+                    <div className="absolute top-0 left-0 w-4 h-4 bg-white/30 rounded-full transform -translate-x-1/2"></div>
+                    <h4 className="font-bold text-white/70">Senior Development Manager</h4>
+                    <p className="text-white/50">Oversee multiple projects, manage complex financial structures, and optimize development strategies.</p>
+                  </div>
+                  <div className="relative pl-8">
+                    <div className="absolute top-0 left-0 w-4 h-4 bg-white/20 rounded-full transform -translate-x-1/2"></div>
+                    <h4 className="font-bold text-white/50">Development Director</h4>
+                    <p className="text-white/40">Lead development divisions, create investment strategies, and manage stakeholder relationships.</p>
+                  </div>
+                </div>
+                <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                      <i className="ri-rocket-line text-primary ri-lg"></i>
+                    </div>
+                    <div>
+                      <h4 className="font-bold">Fast-Track Learning</h4>
+                      <p className="text-white/70 text-sm">Our AI system adapts to your pace and learning style</p>
+                    </div>
+                  </div>
+                  <p className="text-white/60 text-sm">Complete your development career path in as little as 12 months with our accelerated program. Industry average is 3-5 years.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section id="testimonials" className="py-20 bg-black">
+          <div className="container mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="hero-title text-4xl font-bold mb-4">Success <span className="gradient-text">Stories</span></h2>
+              <p className="text-white/70 text-lg">Hear from professionals who transformed their careers with our platform.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Testimonial 1 */}
+              <div className="testimonial-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-2xl font-bold text-primary">JM</div>
+                  <div>
+                    <h4 className="font-bold">James Morrison</h4>
+                    <p className="text-white/70 text-sm">Architect → Development Manager</p>
+                    <div className="flex mt-1">
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-white/80 mb-4">"As an architect, I always wanted to understand the development side of projects. Chiefy gave me practical experience through simulations that felt like real-world scenarios. Within 8 months, I landed a development manager role at a major firm."</p>
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <i className="ri-building-2-line"></i>
+                  <span>Now at: Hines</span>
+                </div>
+              </div>
+              
+              {/* Testimonial 2 */}
+              <div className="testimonial-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center text-2xl font-bold text-secondary">SR</div>
+                  <div>
+                    <h4 className="font-bold">Sophia Rodriguez</h4>
+                    <p className="text-white/70 text-sm">Civil Engineer → Senior Development Associate</p>
+                    <div className="flex mt-1">
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-white/80 mb-4">"The gamified approach made learning complex financial concepts actually enjoyable. The AI mentor identified my knowledge gaps and customized my learning path. I'm now leading mixed-use projects and earning 40% more than in my previous role."</p>
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <i className="ri-building-line"></i>
+                  <span>Now at: Brookfield Properties</span>
+                </div>
+              </div>
+              
+              {/* Testimonial 3 */}
+              <div className="testimonial-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-2xl font-bold text-primary">DK</div>
+                  <div>
+                    <h4 className="font-bold">David Kim</h4>
+                    <p className="text-white/70 text-sm">Construction Manager → Development Director</p>
+                    <div className="flex mt-1">
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-half-fill text-yellow-400"></i>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-white/80 mb-4">"I spent years trying to transition from construction to development without success. The Chiefy platform filled my knowledge gaps and connected me with industry mentors. The achievement system helped showcase my new skills to employers."</p>
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <i className="ri-community-line"></i>
+                  <span>Now at: Tishman Speyer</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
+                <h3 className="text-4xl font-bold gradient-text">87%</h3>
+                <p className="text-white/70">Career Advancement Rate</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
+                <h3 className="text-4xl font-bold gradient-text">42%</h3>
+                <p className="text-white/70">Average Salary Increase</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
+                <h3 className="text-4xl font-bold gradient-text">9 mo</h3>
+                <p className="text-white/70">Avg. Time to Promotion</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
+                <h3 className="text-4xl font-bold gradient-text">2,500+</h3>
+                <p className="text-white/70">Success Stories</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="pricing" className="py-20 bg-gradient-to-b from-black to-black/95 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="w-full h-full grid-bg opacity-20"></div>
+          </div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="hero-title text-4xl font-bold mb-4">Choose Your <span className="gradient-text">Path</span></h2>
+              <p className="text-white/70 text-lg">Select the plan that fits your career goals and learning pace.</p>
+            </div>
+            <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto">
+              {/* Basic Plan */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 flex-1 relative overflow-hidden">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-2">Explorer</h3>
+                  <p className="text-white/70">Perfect for students and early career professionals</p>
+                </div>
+                <div className="mb-8">
+                  <span className="text-4xl font-bold">$29</span>
+                  <span className="text-white/70">/month</span>
+                </div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Access to basic development simulations</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>AI learning assistant</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Community forum access</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Monthly industry webinars</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-white/50">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-close-line"></i>
+                    </div>
+                    <span>Advanced financial modeling</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-white/50">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-close-line"></i>
+                    </div>
+                    <span>1-on-1 mentoring sessions</span>
+                  </li>
+                </ul>
+                <a href="#" className="border border-white/30 hover:border-white/50 bg-white/5 hover:bg-white/10 px-6 py-3 rounded-button text-center font-bold whitespace-nowrap block transition-colors">
+                  Download
+                </a>
+              </div>
+              
+              {/* Pro Plan */}
+              <div className="bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm rounded-xl p-8 border border-white/20 flex-1 relative overflow-hidden lg:scale-105 z-10">
+                <div className="absolute top-5 right-5 bg-primary text-white text-xs px-3 py-1 rounded-full">
+                  MOST POPULAR
+                </div>
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-2">Developer</h3>
+                  <p className="text-white/70">For professionals serious about career advancement</p>
+                </div>
+                <div className="mb-8">
+                  <span className="text-4xl font-bold">$79</span>
+                  <span className="text-white/70">/month</span>
+                </div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>All Explorer features</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Advanced development simulations</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Real-time market data access</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Financial modeling tools</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>2 monthly 1-on-1 mentoring sessions</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Industry certification preparation</span>
+                  </li>
+                </ul>
+                <a href="#" className="neon-button bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-button text-center font-bold whitespace-nowrap block">
+                  Start Free Trial
+                </a>
+              </div>
+              
+              {/* Enterprise Plan */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 flex-1 relative overflow-hidden">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
+                  <p className="text-white/70">For companies training multiple employees</p>
+                </div>
+                <div className="mb-8">
+                  <span className="text-4xl font-bold">Custom</span>
+                  <span className="text-white/70"></span>
+                </div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>All Developer features</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Custom learning paths</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Dedicated account manager</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>White-labeled platform</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Progress tracking dashboard</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 flex items-center justify-center mt-0.5">
+                      <i className="ri-check-line text-green-400"></i>
+                    </div>
+                    <span>Unlimited mentoring sessions</span>
+                  </li>
+                </ul>
+                <a href="#" className="border border-white/30 hover:border-white/50 bg-white/5 hover:bg-white/10 px-6 py-3 rounded-button text-center font-bold whitespace-nowrap block transition-colors">
+                  Contact Sales
+                </a>
+              </div>
+            </div>
+            <div className="mt-12 text-center">
+              <p className="text-white/70 mb-4">All plans include a 14-day free trial. No credit card required.</p>
+              <div className="flex flex-wrap justify-center gap-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    <i className="ri-secure-payment-line text-green-400"></i>
+                  </div>
+                  <span className="text-white/70 text-sm">Secure Payment</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    <i className="ri-refund-2-line text-green-400"></i>
+                  </div>
+                  <span className="text-white/70 text-sm">30-Day Money Back</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    <i className="ri-customer-service-2-line text-green-400"></i>
+                  </div>
+                  <span className="text-white/70 text-sm">24/7 Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-black relative overflow-hidden">
+          <div className="absolute inset-0" style={{backgroundImage: "url('https://readdy.ai/api/search-image?query=Futuristic%20cityscape%20at%20night%20with%20glowing%20neon%20buildings%20and%20skyscrapers.%20Modern%20architecture%20with%20holographic%20projections%20and%20digital%20interfaces.%20Dark%20background%20with%20purple%20and%20blue%20gradient%20lighting.%20Abstract%20data%20visualization%20elements%20and%20grid%20patterns%20overlaid%20on%20buildings.%20The%20image%20has%20a%20subtle%20vignette%20effect%20with%20the%20center%20being%20brighter%20to%20allow%20for%20text%20overlay.&width=1920&height=1080&seq=cta1&orientation=landscape')", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.3}}></div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="hero-title text-4xl md:text-5xl font-bold mb-6">Ready to Build Your Future?</h2>
+              <p className="text-xl text-white/80 mb-8">Join thousands of professionals who are transforming their careers with our AI-powered property development platform.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="#" className="neon-button bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-button text-center font-bold whitespace-nowrap">
+                  Start Free Trial
+                </a>
+                <a href="#" className="border border-white/30 hover:border-white/50 bg-black/50 backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-2">
+                  <i className="ri-calendar-line"></i> Schedule Demo
+                </a>
+              </div>
+              <div className="flex flex-wrap justify-center gap-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                    <i className="ri-user-star-line text-primary"></i>
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-bold">15,000+</h4>
+                    <p className="text-white/70 text-sm">Active Users</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                    <i className="ri-building-4-line text-primary"></i>
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-bold">200+</h4>
+                    <p className="text-white/70 text-sm">Partner Companies</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                    <i className="ri-graduation-cap-line text-primary"></i>
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-bold">50+</h4>
+                    <p className="text-white/70 text-sm">University Partners</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="py-16 bg-gradient-to-b from-black to-black/95">
+          <div className="container mx-auto px-6">
+            <div className="max-w-3xl mx-auto">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+                <div className="text-center mb-8">
+                  <h3 className="hero-title text-2xl font-bold mb-3">Stay Updated</h3>
+                  <p className="text-white/70">Get the latest property development insights and platform updates.</p>
+                </div>
+                <form className="flex flex-col sm:flex-row gap-4">
+                  <input type="email" placeholder="Enter your email" className="flex-1 bg-white/10 border-none text-white px-4 py-3 rounded placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50" />
+                  <button type="submit" className="neon-button bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-button text-center font-bold whitespace-nowrap">
+                    Subscribe
+                  </button>
+                </form>
+                <div className="mt-4 flex items-center gap-2">
+                  <label className="custom-checkbox flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" className="hidden" />
+                    <span className="checkmark"></span>
+                    <span className="text-white/70 text-sm">I agree to receive marketing communications</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-16 bg-black border-t border-white/10">
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+              <div className="lg:col-span-2">
+                <Link href="#" className="flex items-center gap-2 mb-4">
+                  <Image src="https://static.readdy.ai/image/604526b099075072f9fc122e55328024/b41ffca8773352ad86add0ffd6c25b78.png" alt="Chiefy Logo" width={40} height={40} />
+                  <span className="hero-title text-xl font-bold">Chiefy</span>
+                </Link>
+                <p className="text-white/70 mb-6">AI-powered property development mentoring platform that makes learning fun and practical for industry entrants.</p>
+                <div className="flex gap-4">
+                  <Link href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                    <i className="ri-linkedin-fill"></i>
+                  </Link>
+                  <Link href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                    <i className="ri-twitter-x-fill"></i>
+                  </Link>
+                  <Link href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                    <i className="ri-instagram-fill"></i>
+                  </Link>
+                  <Link href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                    <i className="ri-youtube-fill"></i>
+                  </Link>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-4">Platform</h4>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Features</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Learning Paths</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Simulations</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Certifications</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Community</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-4">Company</h4>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">About Us</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Careers</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Partners</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Blog</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Contact</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-4">Legal</h4>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Terms of Service</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Privacy Policy</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">Cookie Policy</Link></li>
+                  <li><Link href="#" className="text-white/70 hover:text-white transition-colors">GDPR Compliance</Link></li>
+                </ul>
+              </div>
+            </div>
+            <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-white/50 text-sm">©️ 2025 BuilderVerse. All rights reserved.</p>
+              <div className="flex gap-6">
+                <div className="flex items-center gap-2 text-white/50">
+                  <i className="ri-visa-line ri-lg"></i>
+                  <i className="ri-mastercard-line ri-lg"></i>
+                  <i className="ri-paypal-line ri-lg"></i>
+                  <i className="ri-apple-fill ri-lg"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <ChatBot />
+      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
+    </>
+  );
+};
+
+export default LandingPage;

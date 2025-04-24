@@ -1,95 +1,141 @@
 "use client";
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Analytics from '@/services/analytics';
 
-export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+interface SidebarProps {
+  onClose: () => void;
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname();
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   const navItems = [
-    { label: 'Discover', icon: '🔍', href: '/discover' },
-    { label: 'Sessions', icon: '🎥', href: '/sessions' },
-    { label: 'Shows', icon: '🎬', href: '/shows' },
-    { label: 'Dashboard', icon: '📊', href: '/dashboard' },
-    { label: 'Library', icon: '📚', href: '/library' },
-    { label: 'My Students', icon: '👥', href: '/students' },
-    { label: 'Subscriptions', icon: '💳', href: '/subscriptions' },
-    { label: 'Training Plans', icon: '📋', href: '/training' },
-    { label: 'Availability', icon: '📅', href: '/availability' },
+    { label: 'Homepage', icon: '🏠', href: '/' },
+    { label: 'Mentality Overlay (Mentoring)', icon: '🧠', href: '/mentoring' },
+    { label: 'Chiefy Predictive (Voice AI)', icon: '🤖', href: '/voice-ai' },
+    { label: 'Dream Team', icon: '🌟', href: '/dream-team' },
+    { label: 'Chat', icon: '💬', href: '/chat' },
+    {
+      label: 'Players and Umpires',
+      icon: '👥',
+      href: '/players-and-umpires',
+      dropdowns: [
+        {
+          title: 'Followers',
+          items: [
+            'Development Managers',
+            'Architects',
+            'Project Managers',
+            'Builders'
+          ]
+        },
+        {
+          title: 'Players',
+          items: [
+            'Consultants: Engineers',
+            'Contractors: Electricians',
+            'Contractors: Plumbers'
+          ]
+        },
+        {
+          title: 'Umpires',
+          items: [
+            'Etc'
+          ]
+        }
+      ]
+    }
   ];
 
+  const toggleSection = (section: string) => {
+    if (expandedSection === section) {
+      setExpandedSection(null);
+    } else {
+      setExpandedSection(section);
+    }
+  };
+
+  const handleNavClick = (item: any) => {
+    Analytics.trackEvent('navigation_click', {
+      item: item.label,
+      path: pathname,
+      timestamp: new Date().toISOString(),
+    });
+    
+    if (!item.dropdowns) {
+      onClose();
+    } else {
+      toggleSection(item.label);
+    }
+  };
+
   return (
-    <>
-      {/* Mobile Menu Button */}
+    <div className="h-full flex flex-col bg-gray-900/95 backdrop-blur-xl text-white">
       <button
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-md"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onClose}
+        className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-
-      {/* Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <aside
-        className={`fixed lg:static inset-y-0 left-0 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out z-40 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-        }`}
-      >
-        <div className="p-4">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 flex items-center justify-center">
-                <Image
-                  src="/chiefy-logo.png"
-                  alt="Chiefy Logo"
-                  width={40}
-                  height={40}
-                  className="w-full h-full"
-                  priority
-                  unoptimized
-                />
-              </div>
-              <span className="text-2xl font-black text-[#FFE600] tracking-wider" style={{ WebkitTextStroke: '2px black' }}>Chiefy</span>
-            </div>
-            <button
-              className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
-              onClick={() => setIsOpen(false)}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <nav>
-            <ul className="space-y-2">
-              {navItems.map((item, index) => (
-                <li key={index}>
+      <div className="p-4">
+        <nav>
+          <ul className="space-y-2">
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <div>
                   <Link
                     href={item.href}
-                    className={`w-full flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-[#F8F8F8] rounded-lg hover:text-[#6B4EFF] transition-colors ${
-                      pathname === item.href ? 'bg-[#F8F8F8] text-[#6B4EFF]' : ''
+                    onClick={() => handleNavClick(item)}
+                    className={`w-full flex items-center justify-between px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 ${
+                      pathname === item.href ? 'bg-white/20 text-white' : ''
                     }`}
                   >
-                    <span>{item.icon}</span>
-                    <span>{item.label}</span>
+                    <div className="flex items-center gap-3">
+                      <span>{item.icon}</span>
+                      <span>{item.label}</span>
+                    </div>
+                    {item.dropdowns && (
+                      <svg
+                        className={`w-4 h-4 transition-transform ${expandedSection === item.label ? 'rotate-180' : ''}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </aside>
-    </>
+                  {item.dropdowns && expandedSection === item.label && (
+                    <div className="mt-2 ml-6 space-y-4">
+                      {item.dropdowns.map((dropdown, dropdownIndex) => (
+                        <div key={dropdownIndex} className="bg-white/5 rounded-lg p-3">
+                          <h3 className="font-medium text-white/90 mb-2">{dropdown.title}</h3>
+                          <ul className="space-y-1">
+                            {dropdown.items.map((subItem, subItemIndex) => (
+                              <li
+                                key={subItemIndex}
+                                className="text-sm text-white/70 hover:text-white cursor-pointer pl-3 transition-colors"
+                              >
+                                {subItem}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
   );
-} 
+}
