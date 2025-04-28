@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="min-h-screen flex">
-      <Sidebar />
+      <Sidebar onClose={() => {}} />
       <div className="flex-1 ml-64">
         <Header />
         {children}
