@@ -5,7 +5,7 @@ run = "npm run dev"
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "cd chiefy && npm start -- -H 0.0.0.0"]
+run = ["sh", "-c", "cd chiefy && PORT=3000 npm start -- -H 0.0.0.0"]
 build = ["sh", "-c", "cd chiefy && npm install && npm run build"]
 
 [[ports]]
