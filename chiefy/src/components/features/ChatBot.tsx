@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { X } from 'lucide-react';
+import { X as XIcon } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -71,7 +71,7 @@ export default function ChatBot() {
               }}
               className="p-2 hover:bg-white/10 rounded-full text-white/70 hover:text-white transition-all"
             >
-              <X className="h-5 w-5" />
+              <XIcon className="h-5 w-5" />
             </button>
           </div>
 
