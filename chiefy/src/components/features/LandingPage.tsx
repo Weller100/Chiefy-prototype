@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { VideoScreen } from "./landing/screens/VideoScreen";
 import { DownloadScreen } from "./landing/screens/DownloadScreen";
+
 import ChatBot from './ChatBot';
 import LoginModal from './LoginModal';
 
