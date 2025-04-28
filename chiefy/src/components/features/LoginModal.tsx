@@ -12,7 +12,7 @@ interface LoginModalProps {
 }
 
 interface SocialIconProps {
-  Icon: IconType;
+  Icon: React.ComponentType<{ className?: string }>;
   className?: string;
 }
 
