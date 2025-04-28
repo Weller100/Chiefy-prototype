@@ -4,10 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { VideoScreen } from "./landing/screens/VideoScreen";
 import { DownloadScreen } from "./landing/screens/DownloadScreen";
-import { MainScreen } from "./landing/screens/MainScreen";
 import ChatBot from './ChatBot';
 import LoginModal from './LoginModal';
-import DreamTeamPage from '@/app/dream-team/page';
+
 
 const LandingPage = () => {
   const [currentScreen, setCurrentScreen] = useState("video");
@@ -55,13 +54,7 @@ const LandingPage = () => {
     );
   }
 
-  if (currentScreen === "dream-team") {
-    return (
-      <DreamTeamPage 
-        setCurrentScreen={setCurrentScreen} 
-      />
-    );
-  }
+  
 
   // Main screen - keeping all the existing content
   return (
