@@ -1,12 +1,9 @@
-run = "bash deploy.sh"
-hidden = [".build", ".config"]
-
-[env]
-PORT = "3000"
-
-[[ports]]
-localPort = 3000
-externalPort = 80
+run = "HOST=0.0.0.0 PORT=3000 npm run start"
 
 [nix]
-channel = "stable-22_11"
+channel = "stable-23_11"
+packages = ["nodejs-18_x", "npm"]
+
+[env]
+HOST = "0.0.0.0"
+PORT = "3000"
