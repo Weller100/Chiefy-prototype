@@ -5,6 +5,7 @@ const nextConfig = {
   images: {
     domains: ['static.readdy.ai'],
   },
+  swcMinify: true,
 };
 
 module.exports = nextConfig;
