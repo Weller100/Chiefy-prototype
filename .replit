@@ -6,7 +6,7 @@ channel = "stable-24_05"
 
 [deployment]
 run = ["sh", "-c", "cd chiefy && npm start -- -H 0.0.0.0"]
-build = ["sh", "-c", "cd chiefy && npm run build"]
+build = ["sh", "-c", "cd chiefy && npm install && npm run build"]
 
 [[ports]]
 localPort = 3000
