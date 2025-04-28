@@ -1,11 +1,9 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: "standalone",
   images: {
-    domains: ['static.readdy.ai'],
+    domains: ["static.readdy.ai"],
   },
-  swcMinify: true,
 };
 
 module.exports = nextConfig;

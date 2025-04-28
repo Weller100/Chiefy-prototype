@@ -1,11 +1,8 @@
-
 "use client";
 import React, { useState } from "react";
-import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { IconType } from "react-icons";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF, FaLinkedinIn, FaApple } from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn, FaApple, FaTimes } from "react-icons/fa";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -83,7 +80,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           onClick={onClose}
           className="absolute top-4 right-4 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10"
         >
-          <X className="h-6 w-6" />
+          <FaTimes className="h-6 w-6" />
         </button>
 
         <div className="text-center mb-8">
