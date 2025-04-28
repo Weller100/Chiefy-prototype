@@ -60,17 +60,18 @@ export const DownloadScreen = ({ setCurrentScreen }: DownloadScreenProps) => {
         <CloseIcon className="h-6 w-6" aria-hidden="true" />
       </button>
       
-      <div className="text-center px-6 max-w-4xl mx-auto">
-        <div className="mb-16 flex items-center justify-center flex-wrap">
-          <h1 className="text-7xl md:text-8xl font-kernel-bold tracking-tight mr-4">
+      <div className="text-center px-6 max-w-6xl mx-auto">
+      <div className="text-center px-6 max-w-6xl mx-auto flex flex-col items-center">
+          {/* Reduced font size for "DOWNLOAD" */}
+          <h1 className="text-4xl md:text-5xl font-kernel-bold tracking-tight mb-8">
             DOWNLOAD
           </h1>
-          <div className="relative h-28 w-64 md:h-40 md:w-96">
+          <div className="relative h-36 w-72 md:h-48 md:w-[26rem]">
             <Image 
               src="/images/Chiefy upscale logo.png" 
               alt="Chiefy Logo" 
               fill
-              sizes="(max-width: 768px) 16rem, 24rem"
+              sizes="(max-width: 768px) 18rem, 26rem"
               className="object-contain"
               priority
             />
