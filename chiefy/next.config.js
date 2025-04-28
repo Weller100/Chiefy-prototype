@@ -1,14 +1,13 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
   experimental: {
-    serverMinification: false,
-    serverActions: {
-      bodySizeLimit: "2mb"
-    }
+    serverActions: true,
+    serverMinification: false
   },
   images: {
-    domains: ["static.readdy.ai"],
+    domains: ["static.readdy.ai"]
   }
 };
 
