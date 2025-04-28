@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { X as CloseIcon } from "lucide-react";
 import { BackButton } from '@/components/shared/BackButton';
 import Image from 'next/image';
 
@@ -52,12 +51,13 @@ export const DownloadScreen = ({ setCurrentScreen }: DownloadScreenProps) => {
     <div className="relative w-full h-screen flex items-center justify-center bg-[#0B1120]">
       <BackButton onClick={() => setCurrentScreen("video")} />
 
+      {/* Close Button without using Lucide React */}
       <button
         onClick={() => setCurrentScreen("main")}
-        className="absolute top-4 right-4 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 transition-all"
+        className="absolute top-4 right-4 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 text-2xl font-bold transition-all"
         aria-label="Close"
       >
-        <CloseIcon className="h-6 w-6" aria-hidden="true" />
+        ×
       </button>
       
       <div className="text-center px-6 max-w-6xl mx-auto">
