@@ -21,6 +21,7 @@ body {
 }
 
 .gradient-text {
+  font-family: 'Kernel-Bold', sans-serif;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
