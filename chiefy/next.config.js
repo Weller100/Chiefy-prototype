@@ -5,7 +5,6 @@ const nextConfig = {
   images: {
     domains: ["static.readdy.ai"],
   },
-  serverExternalPackages: ["*"],
   experimental: {
     serverActions: {
       bodySizeLimit: "2mb"
