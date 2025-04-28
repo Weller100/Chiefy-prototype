@@ -4,6 +4,9 @@ const nextConfig = {
   output: "standalone",
   images: {
     domains: ["static.readdy.ai"],
+  },
+  experimental: {
+    serverComponentsExternalPackages: ["*"]
   }
 };
 
