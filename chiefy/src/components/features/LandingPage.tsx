@@ -251,16 +251,6 @@ const LandingPage = () => {
         </div>
       </div> */}
         </section>
-        import{" "}
-        {
-          (RiFocus3Line,
-          RiGamepadLine,
-          RiVipDiamondLine,
-          RiTeamLine,
-          RiBarChartGroupedLine,
-          RiRecordCircleLine)
-        }{" "}
-        from 'react-icons/ri';
         {/* Features Section */}
         <section id="features" className="py-20 bg-black">
           <div className="container mx-auto px-6">

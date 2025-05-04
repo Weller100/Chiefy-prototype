@@ -1,8 +1,11 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
   experimental: {
-    serverActions: true,
+    serverActions: {
+      allowedOrigins: ["*"]
+    },
     serverMinification: false
   },
   images: {
