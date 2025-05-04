@@ -15,10 +15,24 @@ import {
   RiTrophyLine,
   RiCalendarCheckLine,
   RiRocketLine,
+  RiSecurePaymentLine,
+  RiRefund2Line,
+  RiCustomerService2Line,
+  RiLinkedinFill,
+  RiTwitterXFill,
+  RiInstagramFill,
+  RiYoutubeFill,
 } from "react-icons/ri";
 
 import { BsClock } from "react-icons/bs";
-import { FaRegCircle, FaCheckCircle } from "react-icons/fa";
+import { FiCalendar } from "react-icons/fi";
+import {
+  FaRegCircle,
+  FaCheckCircle,
+  FaStar,
+  FaTimes,
+  FaCheck,
+} from "react-icons/fa";
 import { BiBarChartSquare } from "react-icons/bi";
 import ChatBot from "./ChatBot";
 import LoginModal from "./LoginModal";
@@ -152,39 +166,36 @@ const LandingPage = () => {
         </nav>
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black">
-          {/* Background Image with Overlay */}
+          {/* Background Image */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 z-0"
             style={{
               backgroundImage:
                 "url('https://readdy.ai/api/search-image?query=Futuristic%20cityscape%20with%20neon-outlined%20skyscrapers%20and%20buildings%20in%20purple%2C%20pink%2C%20and%20orange%20gradients.%20Modern%20architecture%20with%20glowing%20windows%20and%20holographic%20elements.%20Perspective%20grid%20integrated%20into%20city%20streets.%20Starry%20sky%20backdrop%20transitioning%20from%20deep%20purple%20to%20pink%20and%20orange%20horizon.%20Digital%20particle%20effects%20suggesting%20AI%20analysis.%20Subtle%20construction%20drones%20and%20holographic%20scaffolding%20visible%20between%20buildings.&width=1920&height=1080&orientation=landscape')",
               backgroundSize: "cover",
               backgroundPosition: "center",
-              opacity: 0.3,
+              opacity: 0.6,
             }}
           ></div>
+          {/* Bottom Fade Overlay */}
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
 
-          {/* Additional Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a0b2e]/80 via-[#1a0b2e]/70 to-[#1a0b2e]/60"></div>
+          {/* Top Overlay (Optional for subtle dimming) */}
+          <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
 
-          {/* Content Container */}
-          <div className="container mx-auto px-6 py-20 relative z-10">
+          {/* Content */}
+          <div className="container mx-auto px-6 py-20 relative z-20">
             <div className="max-w-3xl">
-              {/* Main Heading */}
               <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
                 Accelerate Your{" "}
                 <span className="gradient-text">Property Development</span>{" "}
                 Career
               </h1>
-
-              {/* Subtitle */}
               <p className="text-xl md:text-2xl text-white/80 mb-8">
                 AI-powered mentoring that transforms industry novices into
                 development experts through immersive, interactive learning
                 experiences.
               </p>
-
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <a
                   href="#"
@@ -192,6 +203,7 @@ const LandingPage = () => {
                 >
                   Start Your Journey
                 </a>
+
                 <a
                   href="#"
                   className="relative overflow-hidden border border-white/20 hover:border-white/40 bg-gradient-to-br from-purple-900/30 via-purple-900/20 to-transparent backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-3 group transition-all duration-300"
@@ -434,15 +446,20 @@ const LandingPage = () => {
                         Development Associate
                       </span>
                     </div>
-                    <div className="level-indicator">
+
+                    {/* Outer bar (background) */}
+                    <div className="w-full h-4 bg-white/10 rounded-full overflow-hidden">
+                      {/* Inner bar (progress) */}
                       <div
-                        className="level-indicator"
-                        style={{ width: "75%" }}
+                        className="h-4 bg-white/30 rounded-full transition-all duration-500 ease-in-out"
+                        style={{ width: "75%" }} // Dynamically bind this to XP %
                       ></div>
                     </div>
-                    <div className="flex justify-between text-xs mt-1">
-                      <span className="text-white/50">0 XP</span>
-                      <span className="text-white/50">1,500 / 2,000 XP</span>
+
+                    {/* XP Text */}
+                    <div className="flex justify-between text-xs mt-1 text-white/50">
+                      <span>0 XP</span>
+                      <span>1,500 / 2,000 XP</span>
                     </div>
                   </div>
                   {/* Current Mission */}
@@ -617,11 +634,9 @@ const LandingPage = () => {
                       Architect → Development Manager
                     </p>
                     <div className="flex mt-1">
-                      <i className="ri-star-fill text-yellow-400"></i>
-                      <i className="ri-star-fill text-yellow-400"></i>
-                      <i className="ri-star-fill text-yellow-400"></i>
-                      <i className="ri-star-fill text-yellow-400"></i>
-                      <i className="ri-star-fill text-yellow-400"></i>
+                      {[...Array(5)].map((_, i) => (
+                        <FaStar key={i} className="text-yellow-400" />
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -649,11 +664,9 @@ const LandingPage = () => {
                       Civil Engineer → Senior Development Associate
                     </p>
                     <div className="flex mt-1">
-                      <i className="ri-star-fill text-yellow-400"></i>
-                      <i className="ri-star-fill text-yellow-400"></i>
-                      <i className="ri-star-fill text-yellow-400"></i>
-                      <i className="ri-star-fill text-yellow-400"></i>
-                      <i className="ri-star-fill text-yellow-400"></i>
+                      {[...Array(5)].map((_, i) => (
+                        <FaStar key={i} className="text-yellow-400" />
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -720,37 +733,37 @@ const LandingPage = () => {
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Access to basic development simulations</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>AI learning assistant</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Community forum access</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Monthly industry webinars</span>
                   </li>
                   <li className="flex items-start gap-3 text-white/50">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-close-line"></i>
+                      <FaTimes className="text-white/50" />
                     </div>
                     <span>Advanced financial modeling</span>
                   </li>
                   <li className="flex items-start gap-3 text-white/50">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-close-line"></i>
+                      <FaTimes className="text-white/50" />
                     </div>
                     <span>1-on-1 mentoring sessions</span>
                   </li>
@@ -781,37 +794,37 @@ const LandingPage = () => {
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>All Explorer features</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Advanced development simulations</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Real-time market data access</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Financial modeling tools</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>2 monthly 1-on-1 mentoring sessions</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Industry certification preparation</span>
                   </li>
@@ -839,37 +852,37 @@ const LandingPage = () => {
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>All Developer features</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Custom learning paths</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Dedicated account manager</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>White-labeled platform</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Progress tracking dashboard</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 flex items-center justify-center mt-0.5">
-                      <i className="ri-check-line text-green-400"></i>
+                      <FaCheck className="text-green-400" />
                     </div>
                     <span>Unlimited mentoring sessions</span>
                   </li>
@@ -889,13 +902,13 @@ const LandingPage = () => {
               <div className="flex flex-wrap justify-center gap-6">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 flex items-center justify-center">
-                    <i className="ri-secure-payment-line text-green-400"></i>
+                    <RiSecurePaymentLine className="text-green-400" />
                   </div>
                   <span className="text-white/70 text-sm">Secure Payment</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 flex items-center justify-center">
-                    <i className="ri-refund-2-line text-green-400"></i>
+                    <RiRefund2Line className="text-green-400" />
                   </div>
                   <span className="text-white/70 text-sm">
                     30-Day Money Back
@@ -903,7 +916,7 @@ const LandingPage = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 flex items-center justify-center">
-                    <i className="ri-customer-service-2-line text-green-400"></i>
+                    <RiCustomerService2Line className="text-green-400" />
                   </div>
                   <span className="text-white/70 text-sm">24/7 Support</span>
                 </div>
@@ -943,14 +956,13 @@ const LandingPage = () => {
                   href="#"
                   className="border border-white/30 hover:border-white/50 bg-black/50 backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-2"
                 >
-                  <i className="ri-play-circle-line"></i> Watch Demo
+                  <FiCalendar className="text-xl" /> Watch Demo
                 </a>
               </div>
               <div className="flex flex-wrap justify-center gap-8">
                 <span>
                   {" "}
-                  Join our many active users, partner companies and institutions
-                  today!
+                  Join our many active users, companies and institutions today!
                 </span>
               </div>
             </div>
@@ -1110,25 +1122,25 @@ const LandingPage = () => {
                     href="#"
                     className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
                   >
-                    <i className="ri-linkedin-fill"></i>
+                    <RiLinkedinFill />
                   </Link>
                   <Link
                     href="#"
                     className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
                   >
-                    <i className="ri-twitter-x-fill"></i>
+                    <RiTwitterXFill />
                   </Link>
                   <Link
                     href="#"
                     className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
                   >
-                    <i className="ri-instagram-fill"></i>
+                    <RiInstagramFill />
                   </Link>
                   <Link
                     href="#"
                     className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
                   >
-                    <i className="ri-youtube-fill"></i>
+                    <RiYoutubeFill />
                   </Link>
                 </div>
               </div>

@@ -25,7 +25,7 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, rgb(168 85 247), rgb(219 39 119));
+  background-image: linear-gradient(to right, rgb(168 85 247), rgb(248, 125, 84));
 }
 /* Add this to your globals.css or create a new CSS file */
 
