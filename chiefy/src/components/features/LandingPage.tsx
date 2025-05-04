@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { VideoScreen } from "./landing/screens/VideoScreen";
 import { DownloadScreen } from "./landing/screens/DownloadScreen";
-
+import { RiFocus3Line, RiGamepadLine, RiVipDiamondLine, RiTeamLine, RiBarChartGroupedLine, RiRecordCircleLine } from 'react-icons/ri';
 import ChatBot from "./ChatBot";
 import LoginModal from "./LoginModal";
 
@@ -62,9 +62,9 @@ const LandingPage = () => {
               <Image
                 src="/images/Chiefy upscale logo.png"
                 alt="Chiefy.AI"
-                width={120}
-                height={30}
-                className="h-8 w-auto"
+                width={280}
+                height={200}
+                className="h-24 w-auto"
                 priority
               />
             </Link>
@@ -181,9 +181,23 @@ const LandingPage = () => {
                 </a>
                 <a
                   href="#"
-                  className="border border-white/30 hover:border-white/50 bg-black/50 backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-2"
+                  className="relative overflow-hidden border border-white/20 hover:border-white/40 bg-gradient-to-br from-purple-900/30 via-purple-900/20 to-transparent backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-3 group transition-all duration-300"
                 >
-                  <i className="ri-play-circle-line"></i> Watch Demo
+                  {/* Play Icon Circle with actual play triangle */}
+                  <div className="relative w-8 h-8 rounded-full border-2 border-white flex items-center justify-center transition-transform group-hover:scale-110">
+                    {/* SVG Play Triangle - properly centered */}
+                    <svg
+                      width="12"
+                      height="14"
+                      viewBox="0 0 12 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-0.5"
+                    >
+                      <path d="M0 0.5V13.5L12 7L0 0.5Z" fill="white" />
+                    </svg>
+                  </div>
+                  <span className="text-white">Watch Demo</span>
                 </a>
               </div>
 
@@ -226,7 +240,6 @@ const LandingPage = () => {
         </section>
 
         {/* Features Section */}
-
         <section id="features" className="py-20 bg-black">
           <div className="container mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
@@ -245,13 +258,15 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-purple-500 text-2xl">⭕</div>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-purple-500">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   AI Development Coach
                 </h3>
                 <p className="text-white/70 mb-4">
-                  Personalized AI mentor that adapts to your learning style and
+                  Personalised AI mentor that adapts to your learning style and
                   provides real-time feedback on your delivery strategies.
                 </p>
                 <div
@@ -267,7 +282,14 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-red-400 text-2xl">🎮</div>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-400">
+                    <path d="M5 7h14v10H5V7z" stroke="currentColor" strokeWidth="1.5"/>
+                    <circle cx="7" cy="9" r="1" fill="currentColor"/>
+                    <circle cx="9" cy="9" r="1" fill="currentColor"/>
+                    <rect x="9" y="11" width="6" height="3" rx="0.5" stroke="currentColor" strokeWidth="1.5"/>
+                    <circle cx="15" cy="9" r="1" fill="currentColor"/>
+                    <circle cx="17" cy="9" r="1" fill="currentColor"/>
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Development Simulator
@@ -290,7 +312,11 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-purple-500 text-2xl">💎</div>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-purple-500">
+                    <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M3 12L12 17L21 12" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M3 17L12 22L21 17" stroke="currentColor" strokeWidth="1.5"/>
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Achievement System
@@ -312,7 +338,15 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-red-400 text-2xl">👥</div>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-400">
+                    <circle cx="10" cy="8" r="2" fill="currentColor"/>
+                    <circle cx="18" cy="8" r="2" fill="currentColor"/>
+                    <circle cx="6" cy="15" r="2" fill="currentColor"/>
+                    <circle cx="18" cy="15" r="2" fill="currentColor"/>
+                    <path d="M9 9.5L7 13.5" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M17 9.5L9 7.5" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M17 13.5L9 15.5" stroke="currentColor" strokeWidth="1.5"/>
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Industry Network
@@ -334,7 +368,11 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-purple-500 text-2xl">📊</div>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-purple-500">
+                    <rect x="7" y="12" width="1.5" height="8" rx="0.5" fill="currentColor"/>
+                    <rect x="11" y="8" width="1.5" height="12" rx="0.5" fill="currentColor"/>
+                    <rect x="15" y="14" width="1.5" height="6" rx="0.5" fill="currentColor"/>
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Data Analytics
@@ -352,17 +390,19 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              {/* Feature 6 - Project Personalization */}
+              {/* Feature 6 - Project Personalisation */}
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-red-400 text-2xl">⚪</div>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-400">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
-                  Project Personalization
+                  Project Personalisation
                 </h3>
                 <p className="text-white/70 mb-4">
-                  Customize and personalize your development projects with
+                  Customise and personalise your development projects with
                   advanced tools, profiling and templates to your projects
                   unique requirements.
                 </p>
@@ -428,7 +468,7 @@ const LandingPage = () => {
                     </h3>
                     <p className="text-white/70 mb-4">
                       Complete a site analysis and acquisition strategy for a
-                      mixed-use development in an emerging neighborhood.
+                      mixed-use development in an emerging neighbourhood.
                     </p>
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
@@ -497,46 +537,51 @@ const LandingPage = () => {
                 <h3 className="hero-title text-2xl font-bold mb-6">
                   Development Career Path
                 </h3>
-                <div className="space-y-6">
-                  <div className="relative pl-8 pb-6 border-l-2 border-white/10">
-                    <div className="absolute top-0 left-0 w-4 h-4 bg-green-500 rounded-full transform -translate-x-1/2"></div>
-                    <h4 className="font-bold text-green-400">
-                      Development Associate
-                    </h4>
-                    <p className="text-white/70">
-                      Master the fundamentals of property development, market
-                      analysis, and basic financial modeling.
-                    </p>
-                  </div>
-                  <div className="relative pl-8 pb-6 border-l-2 border-white/10">
-                    <div className="absolute top-0 left-0 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2"></div>
-                    <h4 className="font-bold text-primary">
-                      Development Manager
-                    </h4>
-                    <p className="text-white/70">
-                      Lead site acquisition, manage entitlements, and coordinate
-                      with design and construction teams.
-                    </p>
-                  </div>
-                  <div className="relative pl-8 pb-6 border-l-2 border-white/10">
-                    <div className="absolute top-0 left-0 w-4 h-4 bg-white/30 rounded-full transform -translate-x-1/2"></div>
-                    <h4 className="font-bold text-white/70">
-                      Senior Development Manager
-                    </h4>
-                    <p className="text-white/50">
-                      Oversee multiple projects, manage complex financial
-                      structures, and optimize development strategies.
-                    </p>
-                  </div>
-                  <div className="relative pl-8">
-                    <div className="absolute top-0 left-0 w-4 h-4 bg-white/20 rounded-full transform -translate-x-1/2"></div>
-                    <h4 className="font-bold text-white/50">
-                      Development Director
-                    </h4>
-                    <p className="text-white/40">
-                      Lead development divisions, create investment strategies,
-                      and manage stakeholder relationships.
-                    </p>
+                <div className="relative">
+                  {/* Vertical line through center of circles */}
+                  <div className="absolute left-[8px] top-[8px] w-[2px] h-[calc(100%-16px)] bg-white/10"></div>
+
+                  <div className="space-y-6">
+                    <div className="relative pl-8">
+                      <div className="absolute top-0 left-0 w-4 h-4 bg-green-500 rounded-full transform -translate-x-1/2"></div>
+                      <h4 className="font-bold text-green-400">
+                        Development Associate
+                      </h4>
+                      <p className="text-white/70">
+                        Master the fundamentals of property development, market
+                        analysis, and basic financial modeling.
+                      </p>
+                    </div>
+                    <div className="relative pl-8">
+                      <div className="absolute top-0 left-0 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2"></div>
+                      <h4 className="font-bold text-primary">
+                        Development Manager
+                      </h4>
+                      <p className="text-white/70">
+                        Lead site acquisition, manage entitlements, and
+                        coordinate with design and construction teams.
+                      </p>
+                    </div>
+                    <div className="relative pl-8">
+                      <div className="absolute top-0 left-0 w-4 h-4 bg-white/30 rounded-full transform -translate-x-1/2"></div>
+                      <h4 className="font-bold text-white/70">
+                        Senior Development Manager
+                      </h4>
+                      <p className="text-white/50">
+                        Oversee multiple projects, manage complex financial
+                        structures, and optimise development strategies.
+                      </p>
+                    </div>
+                    <div className="relative pl-8">
+                      <div className="absolute top-0 left-0 w-4 h-4 bg-white/20 rounded-full transform -translate-x-1/2"></div>
+                      <h4 className="font-bold text-white/50">
+                        Development Director
+                      </h4>
+                      <p className="text-white/40">
+                        Lead development divisions, create investment
+                        strategies, and manage stakeholder relationships.
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
@@ -562,102 +607,101 @@ const LandingPage = () => {
           </div>
         </section>
 
-            {/* Testimonials Section */}
-            <section id="testimonials" className="py-20 bg-black">
-              <div className="container mx-auto px-6">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                  <h2 className="hero-title text-4xl font-bold mb-4">
-                    Success <span className="gradient-text">Stories</span>
-                  </h2>
-                  <p className="text-white/70 text-lg">
-                    Hear from professionals who transformed their careers with our
-                    platform.
-                  </p>
+        {/* Testimonials Section */}
+        <section id="testimonials" className="py-20 bg-black">
+          <div className="container mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="hero-title text-4xl font-bold mb-4">
+                Success <span className="gradient-text">Stories</span>
+              </h2>
+              <p className="text-white/70 text-lg">
+                Hear from professionals who transformed their careers with our
+                platform.
+              </p>
+            </div>
+
+            {/* Changed to grid with 2 columns and items centered */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Testimonial 1 */}
+              <div className="testimonial-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-2xl font-bold text-primary">
+                    JM
+                  </div>
+                  <div>
+                    <h4 className="font-bold">James Morrison</h4>
+                    <p className="text-white/70 text-sm">
+                      Architect → Development Manager
+                    </p>
+                    <div className="flex mt-1">
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                    </div>
+                  </div>
                 </div>
-
-                {/* Changed to grid with 2 columns and items centered */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                  {/* Testimonial 1 */}
-                  <div className="testimonial-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-2xl font-bold text-primary">
-                        JM
-                      </div>
-                      <div>
-                        <h4 className="font-bold">James Morrison</h4>
-                        <p className="text-white/70 text-sm">
-                          Architect → Development Manager
-                        </p>
-                        <div className="flex mt-1">
-                          <i className="ri-star-fill text-yellow-400"></i>
-                          <i className="ri-star-fill text-yellow-400"></i>
-                          <i className="ri-star-fill text-yellow-400"></i>
-                          <i className="ri-star-fill text-yellow-400"></i>
-                          <i className="ri-star-fill text-yellow-400"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-white/80 mb-4">
-                      "As an architect, I always wanted to understand the
-                      development side of projects. Chiefy gave me practical
-                      experience through simulations that felt like real-world
-                      scenarios. Within 8 months, I landed a development manager
-                      role at a major firm."
-                    </p>
-                    <div className="flex items-center gap-2 text-white/50 text-sm">
-                      <i className="ri-building-2-line"></i>
-                    </div>
-                  </div>
-
-                  {/* Testimonial 2 */}
-                  <div className="testimonial-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center text-2xl font-bold text-secondary">
-                        SR
-                      </div>
-                      <div>
-                        <h4 className="font-bold">Sophia Rodriguez</h4>
-                        <p className="text-white/70 text-sm">
-                          Civil Engineer → Senior Development Associate
-                        </p>
-                        <div className="flex mt-1">
-                          <i className="ri-star-fill text-yellow-400"></i>
-                          <i className="ri-star-fill text-yellow-400"></i>
-                          <i className="ri-star-fill text-yellow-400"></i>
-                          <i className="ri-star-fill text-yellow-400"></i>
-                          <i className="ri-star-fill text-yellow-400"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-white/80 mb-4">
-                      "The interactive approach made learning complex financial
-                      concepts actually enjoyable. The AI mentor identified my
-                      knowledge gaps and customized my learning path. I'm now
-                      leading mixed-use projects and earning 40% more than in my
-                      previous role."
-                    </p>
-                    <div className="flex items-center gap-2 text-white/50 text-sm">
-                      <i className="ri-building-line"></i>
-                    
-                  </div>
+                <p className="text-white/80 mb-4">
+                  "As an architect, I always wanted to understand the
+                  development side of projects. Chiefy gave me practical
+                  experience through simulations that felt like real-world
+                  scenarios. Within 8 months, I landed a development manager
+                  role at a major firm."
+                </p>
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <i className="ri-building-2-line"></i>
                 </div>
               </div>
 
-            {/* Stats */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
-                    <h3 className="text-4xl font-bold gradient-text">90%</h3>
-                    <p className="text-white/70">Career Advancement Rate</p>
+              {/* Testimonial 2 */}
+              <div className="testimonial-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center text-2xl font-bold text-secondary">
+                    SR
                   </div>
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
-                    <h3 className="text-4xl font-bold gradient-text">9 mo</h3>
-                    <p className="text-white/70">Avg. Time to Promotion</p>
-                  </div>
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
-                    <h3 className="text-4xl font-bold gradient-text">25+</h3>
-                    <p className="text-white/70">Success Stories</p>
+                  <div>
+                    <h4 className="font-bold">Sophia Rodriguez</h4>
+                    <p className="text-white/70 text-sm">
+                      Civil Engineer → Senior Development Associate
+                    </p>
+                    <div className="flex mt-1">
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                      <i className="ri-star-fill text-yellow-400"></i>
+                    </div>
                   </div>
                 </div>
+                <p className="text-white/80 mb-4">
+                  "The interactive approach made learning complex financial
+                  concepts actually enjoyable. The AI mentor identified my
+                  knowledge gaps and customised my learning path. I'm now
+                  leading mixed-use projects and earning 40% more than in my
+                  previous role."
+                </p>
+                <div className="flex items-center gap-2 text-white/50 text-sm">
+                  <i className="ri-building-line"></i>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
+                <h3 className="text-4xl font-bold gradient-text">90%</h3>
+                <p className="text-white/70">Career Advancement Rate</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
+                <h3 className="text-4xl font-bold gradient-text">9 mo</h3>
+                <p className="text-white/70">Avg. Time to Promotion</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
+                <h3 className="text-4xl font-bold gradient-text">25+</h3>
+                <p className="text-white/70">Success Stories</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -922,8 +966,11 @@ const LandingPage = () => {
                 </a>
               </div>
               <div className="flex flex-wrap justify-center gap-8">
-                <span> Join our many active users, partner companies and institutions today!</span>
-                
+                <span>
+                  {" "}
+                  Join our many active users, partner companies and institutions
+                  today!
+                </span>
               </div>
             </div>
           </div>
@@ -1064,10 +1111,16 @@ const LandingPage = () => {
                   <Image
                     src="https://static.readdy.ai/image/604526b099075072f9fc122e55328024/b41ffca8773352ad86add0ffd6c25b78.png"
                     alt="Chiefy Logo"
-                    width={40}
-                    height={40}
+                    width={60}
+                    height={60}
                   />
-                  <span className="hero-title text-xl font-bold">Chiefy</span>
+                  <Image
+                    src="/images/Chiefy upscale logo.png"
+                    alt="Chiefy Logo"
+                    width={280}
+                    height={200}
+                    className="h-24 w-auto"
+                  />
                 </Link>
                 <p className="text-white/70 mb-6">
                   AI-powered property development mentoring platform that makes
