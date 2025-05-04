@@ -5,8 +5,8 @@ run = "npm run dev"
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "cd chiefy && npm run start"]
-build = ["sh", "-c", "cd chiefy && npm install && NODE_ENV=production npm run build"]
+run = ["sh", "-c", "cd chiefy && NODE_ENV=production node server.js"]
+build = ["sh", "-c", "cd chiefy && npm install --production=false && npm run build"]
 
 [[ports]]
 localPort = 3000
