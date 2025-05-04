@@ -162,7 +162,7 @@ const LandingPage = () => {
           
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-white/80 mb-8">
-            AI-powered mentoring that transforms industry novices into development experts through immersive, gamified learning experiences.
+            AI-powered mentoring that transforms industry novices into development experts through immersive, incredible learning experiences.
           </p>
           
           {/* CTA Buttons */}
@@ -212,40 +212,6 @@ const LandingPage = () => {
         </div>
       </div> */}
     </section>
-  
- 
-        {/* Trusted By Section */}
-        <section className="py-16 bg-gradient-to-b from-black to-black/95">
-              <div className="container mx-auto px-6">
-            <h2 className="text-center text-white/70 mb-10 text-lg">TRUSTED BY LEADING UNIVERSITIES & COMPANIES</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
-                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                      <i className="ri-building-4-line ri-2x"></i>
-                      <span className="font-semibold">RMIT University</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                      <i className="ri-building-2-line ri-2x"></i>
-                      <span className="font-semibold">Melbourne University</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                      <i className="ri-government-line ri-2x"></i>
-                      <span className="font-semibold">Deakin University</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                      <i className="ri-home-gear-line ri-2x"></i>
-                      <span className="font-semibold">Stadiums Tasmania</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                      <i className="ri-building-line ri-2x"></i>
-                      <span className="font-semibold">Oliver Hume</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-                      <i className="ri-community-line ri-2x"></i>
-                      <span className="font-semibold">Bryant Alsop Architects</span>
-                    </div>
-                  </div>
-          </div>
-        </section>
 
         {/* Features Section */}
         
@@ -253,7 +219,7 @@ const LandingPage = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold mb-4">Game-Changing <span className="gradient-text">Features</span></h2>
-          <p className="text-white/70 text-lg">Our Platform combines cutting edge AI with gamified learning to create an immersive and practical property development experience.</p>
+          <p className="text-white/70 text-lg">Our Platform combines cutting edge AI with incredible learning to create an immersive and practical property development experience.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -373,7 +339,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="hero-title text-4xl font-bold mb-4">Your <span className="gradient-text">Learning Journey</span></h2>
-              <p className="text-white/70 text-lg">Follow a structured path from industry novice to development expert with our gamified learning system.</p>
+              <p className="text-white/70 text-lg">Follow a structured path from industry novice to development expert with our incredible learning system.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               <div>
@@ -537,7 +503,7 @@ const LandingPage = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-white/80 mb-4">"The gamified approach made learning complex financial concepts actually enjoyable. The AI mentor identified my knowledge gaps and customized my learning path. I'm now leading mixed-use projects and earning 40% more than in my previous role."</p>
+                <p className="text-white/80 mb-4">"The incredible approach made learning complex financial concepts actually enjoyable. The AI mentor identified my knowledge gaps and customized my learning path. I'm now leading mixed-use projects and earning 40% more than in my previous role."</p>
                 <div className="flex items-center gap-2 text-white/50 text-sm">
                   <i className="ri-building-line"></i>
                   <span>Now at: Brookfield Properties</span>
