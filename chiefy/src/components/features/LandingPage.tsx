@@ -4,7 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { VideoScreen } from "./landing/screens/VideoScreen";
 import { DownloadScreen } from "./landing/screens/DownloadScreen";
-import { RiFocus3Line, RiGamepadLine, RiVipDiamondLine, RiTeamLine, RiBarChartGroupedLine, RiRecordCircleLine } from 'react-icons/ri';
+import {
+  RiFocus3Line,
+  RiGamepadLine,
+  RiVipDiamondLine,
+  RiTeamLine,
+  RiBarChartGroupedLine,
+  RiRecordCircleLine,
+  RiLockLine,
+  RiTrophyLine,
+  RiCalendarCheckLine,
+  RiRocketLine,
+} from "react-icons/ri";
+
+import { BsClock } from "react-icons/bs";
+import { FaRegCircle, FaCheckCircle } from "react-icons/fa";
+import { BiBarChartSquare } from "react-icons/bi";
 import ChatBot from "./ChatBot";
 import LoginModal from "./LoginModal";
 
@@ -135,9 +150,7 @@ const LandingPage = () => {
             </div>
           </div>
         </nav>
-
         {/* Hero Section */}
-
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black">
           {/* Background Image with Overlay */}
           <div
@@ -238,7 +251,16 @@ const LandingPage = () => {
         </div>
       </div> */}
         </section>
-
+        import{" "}
+        {
+          (RiFocus3Line,
+          RiGamepadLine,
+          RiVipDiamondLine,
+          RiTeamLine,
+          RiBarChartGroupedLine,
+          RiRecordCircleLine)
+        }{" "}
+        from 'react-icons/ri';
         {/* Features Section */}
         <section id="features" className="py-20 bg-black">
           <div className="container mx-auto px-6">
@@ -258,9 +280,7 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-purple-500">
-                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
-                  </svg>
+                  <FaRegCircle className="text-purple-500 text-2xl" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   AI Development Coach
@@ -282,14 +302,7 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-400">
-                    <path d="M5 7h14v10H5V7z" stroke="currentColor" strokeWidth="1.5"/>
-                    <circle cx="7" cy="9" r="1" fill="currentColor"/>
-                    <circle cx="9" cy="9" r="1" fill="currentColor"/>
-                    <rect x="9" y="11" width="6" height="3" rx="0.5" stroke="currentColor" strokeWidth="1.5"/>
-                    <circle cx="15" cy="9" r="1" fill="currentColor"/>
-                    <circle cx="17" cy="9" r="1" fill="currentColor"/>
-                  </svg>
+                  <RiGamepadLine className="text-red-400 text-2xl" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Development Simulator
@@ -312,11 +325,7 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-purple-500">
-                    <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="currentColor" strokeWidth="1.5"/>
-                    <path d="M3 12L12 17L21 12" stroke="currentColor" strokeWidth="1.5"/>
-                    <path d="M3 17L12 22L21 17" stroke="currentColor" strokeWidth="1.5"/>
-                  </svg>
+                  <RiVipDiamondLine className="text-purple-500 text-2xl" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Achievement System
@@ -338,15 +347,7 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-400">
-                    <circle cx="10" cy="8" r="2" fill="currentColor"/>
-                    <circle cx="18" cy="8" r="2" fill="currentColor"/>
-                    <circle cx="6" cy="15" r="2" fill="currentColor"/>
-                    <circle cx="18" cy="15" r="2" fill="currentColor"/>
-                    <path d="M9 9.5L7 13.5" stroke="currentColor" strokeWidth="1.5"/>
-                    <path d="M17 9.5L9 7.5" stroke="currentColor" strokeWidth="1.5"/>
-                    <path d="M17 13.5L9 15.5" stroke="currentColor" strokeWidth="1.5"/>
-                  </svg>
+                  <RiTeamLine className="text-red-400 text-2xl" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Industry Network
@@ -368,11 +369,7 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-purple-500">
-                    <rect x="7" y="12" width="1.5" height="8" rx="0.5" fill="currentColor"/>
-                    <rect x="11" y="8" width="1.5" height="12" rx="0.5" fill="currentColor"/>
-                    <rect x="15" y="14" width="1.5" height="6" rx="0.5" fill="currentColor"/>
-                  </svg>
+                  <BiBarChartSquare className="text-purple-500 text-2xl" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Data Analytics
@@ -394,9 +391,7 @@ const LandingPage = () => {
               <div className="feature-card bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-red-400/5 rounded-full blur-xl"></div>
                 <div className="w-14 h-14 bg-red-400/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-400">
-                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
-                  </svg>
+                  <FaRegCircle className="text-red-400 text-2xl" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   Project Personalisation
@@ -417,7 +412,6 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-
         {/* How It Works Section */}
         <section
           id="how-it-works"
@@ -473,19 +467,19 @@ const LandingPage = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <div className="w-6 h-6 flex items-center justify-center">
-                          <i className="ri-checkbox-circle-fill text-green-500"></i>
+                          <FaCheckCircle className="text-green-500" />
                         </div>
                         <span className="text-white/50">Market Research</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="w-6 h-6 flex items-center justify-center">
-                          <i className="ri-checkbox-circle-fill text-green-500"></i>
+                          <FaCheckCircle className="text-green-500" />
                         </div>
                         <span className="text-white/50">Zoning Analysis</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="w-6 h-6 flex items-center justify-center">
-                          <i className="ri-time-line text-primary"></i>
+                          <BsClock className="text-purple-500" />
                         </div>
                         <span className="text-white">
                           Financial Feasibility Study
@@ -493,7 +487,7 @@ const LandingPage = () => {
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="w-6 h-6 flex items-center justify-center">
-                          <i className="ri-lock-line text-white/30"></i>
+                          <RiLockLine className="text-white/30" />
                         </div>
                         <span className="text-white/30">
                           Acquisition Strategy
@@ -511,7 +505,7 @@ const LandingPage = () => {
                 <div className="mt-8">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                      <i className="ri-trophy-line text-yellow-400"></i>
+                      <RiTrophyLine className="text-yellow-400 text-xl" />
                     </div>
                     <div>
                       <h4 className="font-bold">Career Progression</h4>
@@ -522,7 +516,7 @@ const LandingPage = () => {
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                      <i className="ri-calendar-check-line text-green-400"></i>
+                      <RiCalendarCheckLine className="text-green-400 text-xl" />
                     </div>
                     <div>
                       <h4 className="font-bold">Real-time Feedback</h4>
@@ -587,7 +581,7 @@ const LandingPage = () => {
                 <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                      <i className="ri-rocket-line text-primary ri-lg"></i>
+                      <RiRocketLine className="text-primary text-xl" />
                     </div>
                     <div>
                       <h4 className="font-bold">Fast-Track Learning</h4>
@@ -606,7 +600,6 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-
         {/* Testimonials Section */}
         <section id="testimonials" className="py-20 bg-black">
           <div className="container mx-auto px-6">
@@ -704,7 +697,6 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-
         {/* Pricing Section */}
         <section
           id="pricing"
@@ -929,7 +921,6 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-
         {/* CTA Section */}
         <section className="py-20 bg-black relative overflow-hidden">
           <div
@@ -975,7 +966,6 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-
         {/* Newsletter Section */}
         <section
           id="stay-updated"
@@ -1101,7 +1091,6 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-
         {/* Footer */}
         <footer className="py-16 bg-black border-t border-white/10">
           <div className="container mx-auto px-6">
