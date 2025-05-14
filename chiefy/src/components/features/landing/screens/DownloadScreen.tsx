@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { BackButton } from '@/components/shared/BackButton';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
 
 interface DownloadScreenProps {
   setCurrentScreen: (screen: string) => void;
@@ -40,10 +41,10 @@ export const DownloadScreen = ({ setCurrentScreen }: DownloadScreenProps) => {
       });
     } else if (userAgent.includes('iphone') || userAgent.includes('ipad')) {
       alert('To add to home screen:\n\n1. Tap the Share button (rectangle with arrow)\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" to confirm');
-      window.open('https://ethans-team-93.adalo.com/online-education-app', '_blank');
+      window.open('https://chiefy-beta-app.adalo.com/online-education-app', '_blank');
     } else {
-      alert('Please use your browser menu to add to home screen');
-      window.open('https://ethans-team-93.adalo.com/online-education-app', '_blank');
+      toast("Click your browser menu and tap 'Add to Home Screen'");
+      window.open('https://chiefy-beta-app.adalo.com/online-education-app', '_blank');
     }
   };
 

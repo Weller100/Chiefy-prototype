@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaLinkedinIn, FaApple, FaTimes } from "react-icons/fa";
+import { signUp, signIn } from "@/lib/auth"; // adjust path if needed
+
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -35,26 +37,22 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
     setIsLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
       if (isLogin) {
-        // Store user data
-        localStorage.setItem("user", JSON.stringify({ email: formData.email }));
-        // Navigate to dashboard
-        router.push("/dashboard");
+        await signIn(formData.email, formData.password);
       } else {
-        console.log("Signing up with:", formData);
-        // After signup, automatically log in and redirect
-        localStorage.setItem("user", JSON.stringify({ email: formData.email }));
-        router.push("/dashboard");
+        await signUp(formData.email, formData.password);
       }
-    } catch (err) {
-      setError("Authentication failed. Please try again.");
+
+      router.push("/dashboard");
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Authentication failed.");
     } finally {
       setIsLoading(false);
     }
   };
+
+
 
   const handleSocialLogin = async (provider: string) => {
     setError("");

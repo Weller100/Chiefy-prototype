@@ -5,6 +5,11 @@ import Link from "next/link";
 import { VideoScreen } from "./landing/screens/VideoScreen";
 import { DownloadScreen } from "./landing/screens/DownloadScreen";
 import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import {
   RiFocus3Line,
   RiGamepadLine,
   RiVipDiamondLine,
@@ -198,32 +203,19 @@ const LandingPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <a
-                  href="#"
+                  href="#stay-updated"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      .querySelector("#stay-updated")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className="neon-button bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-button text-center font-bold whitespace-nowrap"
                 >
-                  Start Your Journey
+                  Register Now
                 </a>
 
-                <a
-                  href="#"
-                  className="relative overflow-hidden border border-white/20 hover:border-white/40 bg-gradient-to-br from-purple-900/30 via-purple-900/20 to-transparent backdrop-blur-sm px-8 py-4 rounded-button text-center font-bold whitespace-nowrap flex items-center justify-center gap-3 group transition-all duration-300"
-                >
-                  {/* Play Icon Circle with actual play triangle */}
-                  <div className="relative w-8 h-8 rounded-full border-2 border-white flex items-center justify-center transition-transform group-hover:scale-110">
-                    {/* SVG Play Triangle - properly centered */}
-                    <svg
-                      width="12"
-                      height="14"
-                      viewBox="0 0 12 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="ml-0.5"
-                    >
-                      <path d="M0 0.5V13.5L12 7L0 0.5Z" fill="white" />
-                    </svg>
-                  </div>
-                  <span className="text-white">Watch Demo</span>
-                </a>
+                
               </div>
 
               {/* Stats Section */}
@@ -1011,8 +1003,37 @@ const LandingPage = () => {
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
-                      // Handle form submission
-                      console.log(formData);
+                      const dataToSend = {
+                        type: registrationType,
+                        name: formData.name,
+                        companyName: formData.companyName,
+                        email: formData.email,
+                        phone: formData.phone,
+                        timestamp: new Date().toLocaleString(),
+                      };
+
+                      fetch("https://sheetdb.io/api/v1/8fhp4ycdc8j1g", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ data: dataToSend }),
+                      })
+                        .then((res) => res.json())
+                        .then(() => {
+                          alert("Registration successful!");
+                          setFormData({
+                            name: "",
+                            companyName: "",
+                            email: "",
+                            phone: "",
+                          });
+                          setRegistrationType(null);
+                        })
+                        .catch((err) => {
+                          console.error("Submission error:", err);
+                          alert("Something went wrong. Try again.");
+                        });
                     }}
                     className="space-y-4"
                   >
