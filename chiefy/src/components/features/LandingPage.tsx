@@ -200,7 +200,7 @@ const LandingPage = () => {
                 Career
               </h1>
               <p className="text-xl md:text-2xl text-white/80 mb-8">
-                'Practical, fun & new-age, beginner-friendly coaching.
+                Practical, fun & new-age, beginner-friendly coaching.
                 /* AI-powered mentoring that transforms industry novices into
                 development experts through immersive, interactive learning
                 experiences. */
