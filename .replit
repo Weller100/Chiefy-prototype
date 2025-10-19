@@ -6,7 +6,7 @@ channel = "stable-24_05"
 
 [deployment]
 run = ["sh", "-c", "cd chiefy && NODE_ENV=production node server.js"]
-build = ["sh", "-c", "cd chiefy && npm install --production=false && npm run build"]
+build = ["sh", "-c", "cd chiefy && npm install && npm run build"]
 
 [[ports]]
 localPort = 3000
@@ -15,3 +15,18 @@ externalPort = 80
 [[ports]]
 localPort = 3001
 externalPort = 3001
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 41789480
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd chiefy && npm run dev"
+
+[agent]
+expertMode = true

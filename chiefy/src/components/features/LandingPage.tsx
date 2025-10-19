@@ -159,13 +159,15 @@ const LandingPage = () => {
               >
                 Login
               </button>
-              <button
-                onClick={() => setCurrentScreen("download")}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all"
-              >
+              <a
+                href="https://chiefy-beta-app.adalo.com/online-education-app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all"
+                >
                 Download
                 <span>↓</span>
-              </button>
+              </a>
             </div>
           </div>
         </nav>

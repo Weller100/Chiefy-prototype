@@ -80,7 +80,7 @@ export const DownloadScreen = ({ setCurrentScreen }: DownloadScreenProps) => {
         </div>
         
         <p className="text-2xl text-white/70 mb-16 max-w-2xl mx-auto">
-          Get the full Chiefy experience on your device for the best property development training
+          Unlock the property development world from your pocket — anytime, anywhere with Chiefy.
         </p>
 
         <button 
