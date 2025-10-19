@@ -194,7 +194,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 py-20 relative z-20">
             <div className="max-w-3xl">
               <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                Accelerate Your{" "}
+                Get Property Development Ready in 30 Days.
                 <span className="gradient-text">Property Development</span>{" "}
                 Career
               </h1>
