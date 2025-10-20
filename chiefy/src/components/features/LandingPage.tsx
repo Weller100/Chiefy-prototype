@@ -195,15 +195,19 @@ const LandingPage = () => {
             <div className="max-w-3xl">
               <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
                 Get Property Development Ready in 30 Days.
-                // Accelerate Your{" "}
+                {/* Previous Version*/}
+                {/* Accelerate Your{" "} */}
                 <span className="gradient-text">Property Development</span>{" "}
                 Career
               </h1>
               <p className="text-xl md:text-2xl text-white/80 mb-8">
                 Practical, fun & new-age, beginner-friendly coaching.
-                /* AI-powered mentoring that transforms industry novices into
-                development experts through immersive, interactive learning
-                experiences. */
+                {/* Previous Version*/}
+                {/* 
+                  AI-powered mentoring that transforms industry novices into
+                  development experts through immersive, interactive learning
+                  experiences. 
+                */}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <a
@@ -216,7 +220,9 @@ const LandingPage = () => {
                   }}
                   className="neon-button bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-button text-center font-bold whitespace-nowrap"
                 >
-                  Register Now
+                  Join the Waitlist Now
+                  {/* Previous Version*/}
+                  {/* Register Now*/}
                 </a>
 
                 
@@ -247,7 +253,8 @@ const LandingPage = () => {
                   <h3 className="text-3xl font-bold gradient-text">4.9/5</h3>
                   <p className="text-white/70 text-sm">User Rating</p>
                 </div>
-              </div>
+              </div> 
+              
             </div>
           </div>
 
