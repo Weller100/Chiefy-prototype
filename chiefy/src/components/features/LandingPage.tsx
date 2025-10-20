@@ -305,6 +305,30 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Target Audience Section */}
+              <div className="mt-16">
+                <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+                  Target Audience
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                  {/* University Students */}
+                  <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10 hover:border-purple-500/50 transition-all">
+                    <h4 className="text-xl font-bold text-white mb-3">University Students</h4>
+                    <p className="text-white/70">
+                      Build your career foundation in property and construction from day one.
+                    </p>
+                  </div>
+
+                  {/* Trades Professionals */}
+                  <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10 hover:border-purple-500/50 transition-all">
+                    <h4 className="text-xl font-bold text-white mb-3">Trades Professionals</h4>
+                    <p className="text-white/70">
+                      Advance your skills and learn to navigate the industry with confidence.
+                    </p>
+                  </div>
+                </div>
+              </div>
               
             </div>
           </div>
