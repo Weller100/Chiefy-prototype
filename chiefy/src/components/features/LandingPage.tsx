@@ -194,11 +194,11 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 py-20 relative z-20">
             <div className="max-w-3xl">
               <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                Get Property Development Ready in 30 Days.
+                Get 
                 {/* Previous Version*/}
                 {/* Accelerate Your{" "} */}
                 <span className="gradient-text">Property Development</span>{" "}
-                Career
+                Ready in 30 Days.
               </h1>
               <p className="text-xl md:text-2xl text-white/80 mb-8">
                 Practical, fun & new-age, beginner-friendly coaching.
