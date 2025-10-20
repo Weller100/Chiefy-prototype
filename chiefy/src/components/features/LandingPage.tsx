@@ -228,32 +228,28 @@ const LandingPage = () => {
                 
               </div>
 
-              {/* Stats Section */}
+{/* Stats Section 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-                {/* Employment Rate */}
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">90%</h3>
                   <p className="text-white/70 text-sm">Employment Rate</p>
                 </div>
 
-                {/* Active Learners */}
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">100</h3>
                   <p className="text-white/70 text-sm">Active Learners</p>
                 </div>
 
-                {/* Industry Partners */}
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">25+</h3>
                   <p className="text-white/70 text-sm">Industry Partners</p>
                 </div>
 
-                {/* User Rating */}
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">4.9/5</h3>
                   <p className="text-white/70 text-sm">User Rating</p>
                 </div>
-              </div> 
+              </div> */} 
               
             </div>
           </div>
