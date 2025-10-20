@@ -249,7 +249,62 @@ const LandingPage = () => {
                   <h3 className="text-3xl font-bold gradient-text">4.9/5</h3>
                   <p className="text-white/70 text-sm">User Rating</p>
                 </div>
-              </div> */} 
+              </div> */}
+
+              {/* Confidence Section */}
+              <div className="mt-16 bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10">
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed text-center">
+                  Are you feeling lost or confused or don't know where to start with your career in property & construction? At Chiefy we give you the tools you need to communicate across the 100+ industry trades and professionals so you can act with confidence from Day 1.
+                </p>
+              </div>
+
+              {/* Collaboration Section */}
+              <div className="mt-16">
+                <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+                  Brought to you in collaboration with
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+                  {/* Sydney University */}
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                    <span className="text-white/70 text-center font-semibold">University of Sydney</span>
+                  </div>
+
+                  {/* UTS */}
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                    <span className="text-white/70 text-center font-semibold">UTS</span>
+                  </div>
+
+                  {/* RMIT */}
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                    <span className="text-white/70 text-center font-semibold">RMIT</span>
+                  </div>
+
+                  {/* Melbourne University */}
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                    <span className="text-white/70 text-center font-semibold">University of Melbourne</span>
+                  </div>
+
+                  {/* Bryant Alsop Architecture */}
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                    <span className="text-white/70 text-center font-semibold">Bryant Alsop</span>
+                  </div>
+
+                  {/* UrbanCore */}
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                    <span className="text-white/70 text-center font-semibold">UrbanCore</span>
+                  </div>
+
+                  {/* Stadiums Tasmania */}
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                    <span className="text-white/70 text-center font-semibold">Stadiums Tasmania</span>
+                  </div>
+
+                  {/* LVL Group */}
+                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                    <span className="text-white/70 text-center font-semibold">LVL Group</span>
+                  </div>
+                </div>
+              </div>
               
             </div>
           </div>
