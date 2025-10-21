@@ -510,6 +510,71 @@ const LandingPage = () => {
                 expert with our interactive learning system.
               </p>
             </div>
+
+            {/* Join the Waitlist Section */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-purple-500/20">
+                <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+                  Join the Waitlist and experience the <span className="gradient-text">Chiefy Way</span> with...
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaCheck className="text-purple-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white mb-1">Exposure to Industry experts and networks</h4>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaCheck className="text-purple-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white mb-1">Relatable Lessons & Real-life Scenarios</h4>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaCheck className="text-purple-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white mb-1">Site visit(s)</h4>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaCheck className="text-purple-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white mb-1">Guest Speakers</h4>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaCheck className="text-purple-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white mb-1">Innovative Training Tools</h4>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaCheck className="text-purple-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white mb-1">Limited Edition Chiefy.ai Merchandise</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 relative">
@@ -945,7 +1010,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="hero-title text-4xl md:text-5xl font-bold mb-6">
-                What are you waiting for? Build your Future Today”
+                What are you waiting for? Build your Future Today
               </h2>
               <p className="text-xl text-white/80 mb-8">
                 Join thousands of professionals who are transforming their
