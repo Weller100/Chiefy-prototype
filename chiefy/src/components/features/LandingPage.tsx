@@ -194,20 +194,14 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 py-20 relative z-20">
             <div className="max-w-3xl">
               <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                Get Property Development Ready in 30 Days.
-                {/* Previous Version*/}
-                {/* Accelerate Your{" "} */}
+                Accelerate Your{" "}
                 <span className="gradient-text">Property Development</span>{" "}
                 Career
               </h1>
               <p className="text-xl md:text-2xl text-white/80 mb-8">
-                Practical, fun & new-age, beginner-friendly coaching.
-                {/* Previous Version*/}
-                {/* 
-                  AI-powered mentoring that transforms industry novices into
-                  development experts through immersive, interactive learning
-                  experiences. 
-                */}
+                AI-powered mentoring that transforms industry novices into
+                development experts through immersive, interactive learning
+                experiences.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <a
@@ -220,37 +214,38 @@ const LandingPage = () => {
                   }}
                   className="neon-button bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-button text-center font-bold whitespace-nowrap"
                 >
-                  Join the Waitlist Now
-                  {/* Previous Version*/}
-                  {/* Register Now*/}
+                  Register Now
                 </a>
 
                 
               </div>
 
-{/* Stats Section 
+              {/* Stats Section */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                {/* Employment Rate */}
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">90%</h3>
                   <p className="text-white/70 text-sm">Employment Rate</p>
                 </div>
 
+                {/* Active Learners */}
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">100</h3>
                   <p className="text-white/70 text-sm">Active Learners</p>
                 </div>
 
+                {/* Industry Partners */}
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">25+</h3>
                   <p className="text-white/70 text-sm">Industry Partners</p>
                 </div>
 
+                {/* User Rating */}
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">4.9/5</h3>
                   <p className="text-white/70 text-sm">User Rating</p>
                 </div>
-              </div> */} 
-              
+              </div>
             </div>
           </div>
 
