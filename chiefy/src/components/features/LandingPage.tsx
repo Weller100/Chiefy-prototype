@@ -1017,7 +1017,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="hero-title text-4xl md:text-5xl font-bold mb-6">
-                Ready to Build Your Future?
+                What are you waiting for? Build your Future Today”
               </h2>
               <p className="text-xl text-white/80 mb-8">
                 Join thousands of professionals who are transforming their
@@ -1046,8 +1046,7 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-        {/* Newsletter Section - COMMENTED OUT FOR FUTURE USE */}
-        {/* 
+        {/* STAY UPDATED SECTION - COMMENTED OUT - NOT NEEDED 
         <section
           id="stay-updated"
           className="py-20 bg-gradient-to-b from-black to-purple-900/20"
