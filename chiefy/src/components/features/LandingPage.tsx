@@ -228,7 +228,7 @@ const LandingPage = () => {
                 
               </div>
 
-{/* Stats Section 
+              {/* Stats Section - COMMENTED OUT
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
                 <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
                   <h3 className="text-3xl font-bold gradient-text">90%</h3>
@@ -249,7 +249,8 @@ const LandingPage = () => {
                   <h3 className="text-3xl font-bold gradient-text">4.9/5</h3>
                   <p className="text-white/70 text-sm">User Rating</p>
                 </div>
-              </div> */}
+              </div>
+              */}
 
               {/* Confidence Section */}
               <div className="mt-16 bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10">
@@ -761,8 +762,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            {/* Stats */}
-            {/* 
+            {/* Stats - COMMENTED OUT 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
               <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center">
                 <h3 className="text-4xl font-bold gradient-text">90%</h3>
@@ -777,8 +777,9 @@ const LandingPage = () => {
                 <p className="text-white/70">Success Stories</p>
               </div>
             </div>
+            */}
           </div>
-        </section>*/}
+        </section>
         {/* Pricing Section */}
         <section
           id="pricing"
