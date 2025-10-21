@@ -503,84 +503,13 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="hero-title text-4xl font-bold mb-4">
-                Your 30-Day Path to <span className="gradient-text">30Development Ready’.</span>
+                Your 30-Day Path to <span className="gradient-text">Development Ready’.</span>
               </h2>
               <p className="text-white/70 text-lg">
                 Follow a structured path from industry novice to development
                 expert with our interactive learning system.
               </p>
             </div>
-
-            {/* Join the Waitlist Section */}
-            <div className="max-w-4xl mx-auto mb-16">
-              <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-purple-500/20">
-                <h3 className="text-2xl md:text-3xl font-bold text-center mb-6">
-                  Join the Waitlist and experience the <span className="gradient-text">Chiefy Way</span> with...
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Item 1 */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <FaCheck className="text-purple-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">Exposure to Industry experts and networks</h4>
-                    </div>
-                  </div>
-
-                  {/* Item 2 */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <FaCheck className="text-purple-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">Relatable Lessons & Real-life Scenarios</h4>
-                    </div>
-                  </div>
-
-                  {/* Item 3 */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <FaCheck className="text-purple-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">Site visit(s)</h4>
-                    </div>
-                  </div>
-
-                  {/* Item 4 */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <FaCheck className="text-purple-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">Guest Speakers</h4>
-                    </div>
-                  </div>
-
-                  {/* Item 5 */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <FaCheck className="text-purple-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">Innovative Training Tools</h4>
-                    </div>
-                  </div>
-
-                  {/* Item 6 */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <FaCheck className="text-purple-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">Limited Edition Chiefy.ai Merchandise</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 relative">
@@ -1117,7 +1046,8 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-        {/* Newsletter Section */}
+        {/* Newsletter Section - COMMENTED OUT FOR FUTURE USE */}
+        {/* 
         <section
           id="stay-updated"
           className="py-20 bg-gradient-to-b from-black to-purple-900/20"
@@ -1271,6 +1201,7 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
+        */}
         {/* Footer */}
         <footer className="py-16 bg-black border-t border-white/10">
           <div className="container mx-auto px-6">
