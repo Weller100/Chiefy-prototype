@@ -194,10 +194,10 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 py-20 relative z-20">
             <div className="max-w-3xl">
               <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                Get 
+                Get Your{" "}
                 {/* Previous Version*/}
                 {/* Accelerate Your{" "} */}
-                <span className="gradient-text">Property Development</span>{" "}
+                <span className="gradient-text">  Property Development</span>{" "}
                 Ready in 30 Days.
               </h1>
               <p className="text-xl md:text-2xl text-white/80 mb-8">
@@ -251,96 +251,106 @@ const LandingPage = () => {
                 </div>
               </div>
               */}
+            </div>
 
-              {/* Confidence Section */}
-              <div className="mt-16 bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed text-center">
-                  Are you feeling lost or confused or don't know where to start with your career in property & construction? At Chiefy we give you the tools you need to communicate across the 100+ industry trades and professionals so you can act with confidence from Day 1.
-                </p>
-              </div>
+            {/* Confidence Section */}
+            <div className="mt-16 bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10">
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed text-center">
+                Are you feeling lost or confused or don't know where to start with your career in property & construction? At Chiefy we give you the tools you need to communicate across the 100+ industry trades and professionals so you can act with confidence from Day 1.
+              </p>
+            </div>
 
-              {/* Collaboration Section */}
-              <div className="mt-16">
-                <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
-                  Brought to you in collaboration with
-                </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-                  {/* Sydney University */}
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
-                    <span className="text-white/70 text-center font-semibold">University of Sydney</span>
-                  </div>
+            {/* Collaboration Section */}
+            <div className="mt-16">
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+                Brought to you in collaboration with
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+                {/* Sydney University */}
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                  <span className="text-white/70 text-center font-semibold">University of Sydney</span>
+                </div>
 
-                  {/* UTS */}
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
-                    <span className="text-white/70 text-center font-semibold">UTS</span>
-                  </div>
+                {/* UTS */}
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                  <span className="text-white/70 text-center font-semibold">UTS</span>
+                </div>
 
-                  {/* RMIT */}
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
-                    <span className="text-white/70 text-center font-semibold">RMIT</span>
-                  </div>
+                {/* RMIT */}
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                  <span className="text-white/70 text-center font-semibold">RMIT</span>
+                </div>
 
-                  {/* Melbourne University */}
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
-                    <span className="text-white/70 text-center font-semibold">University of Melbourne</span>
-                  </div>
+                {/* Melbourne University */}
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                  <span className="text-white/70 text-center font-semibold">University of Melbourne</span>
+                </div>
 
-                  {/* Bryant Alsop Architecture */}
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
-                    <span className="text-white/70 text-center font-semibold">Bryant Alsop</span>
-                  </div>
+                {/* Bryant Alsop Architecture */}
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                  <span className="text-white/70 text-center font-semibold">Bryant Alsop</span>
+                </div>
 
-                  {/* UrbanCore */}
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
-                    <span className="text-white/70 text-center font-semibold">UrbanCore</span>
-                  </div>
+                {/* UrbanCore */}
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                  <span className="text-white/70 text-center font-semibold">UrbanCore</span>
+                </div>
 
-                  {/* Stadiums Tasmania */}
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
-                    <span className="text-white/70 text-center font-semibold">Stadiums Tasmania</span>
-                  </div>
+                {/* Stadiums Tasmania */}
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                  <span className="text-white/70 text-center font-semibold">Stadiums Tasmania</span>
+                </div>
 
-                  {/* LVL Group */}
-                  <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
-                    <span className="text-white/70 text-center font-semibold">LVL Group</span>
-                  </div>
+                {/* LVL Group */}
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 w-full h-32 flex items-center justify-center">
+                  <span className="text-white/70 text-center font-semibold">LVL Group</span>
                 </div>
               </div>
+            </div>
 
-              {/* Target Audience Section */}
-              <div className="mt-16">
-                <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
-                  Target Audience
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                   University Students 
-                  <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10 hover:border-purple-500/50 transition-all">
-                    <h4 className="text-xl font-bold text-white mb-3">University Students</h4>
-                    <p className="text-white/70">
-                      Build your career foundation in property and construction from day one.
-                    </p>
+            {/* Target Audience Section */}
+            <div className="mt-20">
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-12">
+                Target Audience
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                {/* University Students Card */}
+                <div className="bg-gradient-to-br from-purple-900/20 to-purple-600/10 backdrop-blur-sm p-10 rounded-xl border-2 border-purple-500/30 hover:border-purple-500/60 transition-all shadow-lg hover:shadow-purple-500/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                      <span className="text-2xl">🎓</span>
+                    </div>
+                    <h4 className="text-2xl font-bold text-white">University Students</h4>
                   </div>
+                  <p className="text-white/80 text-lg">
+                    Build your career foundation in property and construction from day one.
+                  </p>
+                </div>
 
-                  Trades Professionals 
-                  <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10 hover:border-purple-500/50 transition-all">
-                    <h4 className="text-xl font-bold text-white mb-3">Trades Professionals</h4>
-                    <p className="text-white/70">
-                      Advance your skills and learn to navigate the industry with confidence.
-                    </p>
+                {/* Trades Professionals Card */}
+                <div className="bg-gradient-to-br from-pink-900/20 to-pink-600/10 backdrop-blur-sm p-10 rounded-xl border-2 border-pink-500/30 hover:border-pink-500/60 transition-all shadow-lg hover:shadow-pink-500/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center">
+                      <span className="text-2xl">🔧</span>
+                    </div>
+                    <h4 className="text-2xl font-bold text-white">Trades Professionals</h4>
                   </div>
+                  <p className="text-white/80 text-lg">
+                    Advance your skills and learn to navigate the industry with confidence.
+                  </p>
                 </div>
               </div>
-              
             </div>
           </div>
 
-          {/* Animated Scroll Indicator
+          {/* Animated Scroll Indicator - COMMENTED OUT
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
         <p className="text-white/70 mb-2 text-sm">Scroll to explore</p>
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
           <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
         </div>
-      </div> */}
+      </div>
+      */}
         </section>
         {/* Features Section */}
         <section id="features" className="py-20 bg-black">
@@ -496,7 +506,7 @@ const LandingPage = () => {
         {/* How It Works Section */}
         <section
           id="how-it-works"
-          className="py-20 bg-gradient-to-b from-black to-black/95 relative overflow-hidden"
+          className="py-32 mt-16 bg-gradient-to-b from-black to-black/95 relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-full">
             <div className="w-full h-full grid-bg opacity-20"></div>
