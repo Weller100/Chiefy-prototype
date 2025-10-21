@@ -1046,8 +1046,8 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-        {/* STAY UPDATED SECTION - COMMENTED OUT - NOT NEEDED 
-        <section
+        {/* Newsletter Section */}
+        {/*<section
           id="stay-updated"
           className="py-20 bg-gradient-to-b from-black to-purple-900/20"
         >
@@ -1199,8 +1199,7 @@ const LandingPage = () => {
               )}
             </div>
           </div>
-        </section>
-        */}
+        </section> */}
         {/* Footer */}
         <footer className="py-16 bg-black border-t border-white/10">
           <div className="container mx-auto px-6">
